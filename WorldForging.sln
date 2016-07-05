@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldForging", "WorldForging\WorldForging.csproj", "{B21C1443-D1E1-426B-9743-97F47D1C01AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldForging.Tests", "WorldForging.Tests\WorldForging.Tests.csproj", "{3CC91D04-CC8D-4AED-B828-FA910AFBD3A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B21C1443-D1E1-426B-9743-97F47D1C01AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B21C1443-D1E1-426B-9743-97F47D1C01AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B21C1443-D1E1-426B-9743-97F47D1C01AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B21C1443-D1E1-426B-9743-97F47D1C01AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CC91D04-CC8D-4AED-B828-FA910AFBD3A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CC91D04-CC8D-4AED-B828-FA910AFBD3A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CC91D04-CC8D-4AED-B828-FA910AFBD3A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CC91D04-CC8D-4AED-B828-FA910AFBD3A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
