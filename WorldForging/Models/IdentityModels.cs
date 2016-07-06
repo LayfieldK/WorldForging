@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace WorldForging.Models
 {
@@ -16,6 +17,8 @@ namespace WorldForging.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public virtual ICollection<World> Worlds { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -29,5 +32,7 @@ namespace WorldForging.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.World> Worlds { get; set; }
     }
 }
