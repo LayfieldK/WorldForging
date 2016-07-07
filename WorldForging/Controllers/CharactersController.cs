@@ -39,6 +39,7 @@ namespace WorldForging.Controllers
         // GET: Characters/Create
         public ActionResult Create(int? worldID)
         {
+            TempData["WorldId"] = worldID;
             return View();
         }
 
@@ -51,6 +52,8 @@ namespace WorldForging.Controllers
         {
             if (ModelState.IsValid)
             {
+                var refWorldId = (int)TempData["WorldId"];
+                character.WorldId = refWorldId;
                 db.Characters.Add(character);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
