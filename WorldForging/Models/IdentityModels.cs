@@ -34,5 +34,9 @@ namespace WorldForging.Models
         }
 
         public System.Data.Entity.DbSet<WorldForging.Models.World> Worlds { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Faction> Factions { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Character> Characters { get; set; }
     }
 }

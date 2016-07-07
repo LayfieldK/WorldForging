@@ -8,124 +8,113 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WorldForging.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WorldForging.Controllers
 {
-    public class WorldsController : Controller
+    public class FactionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public WorldsController()
+        // GET: Factions
+        public async Task<ActionResult> Index(int? worldID)
         {
-            this.db = new ApplicationDbContext();
-            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.db));
+            return View(await db.Factions.Where(c => c.WorldId == worldID).ToListAsync());
         }
 
-        // GET: Worlds
-        public async Task<ActionResult> Index()
-        {
-            ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            return View(currentUser.Worlds.ToList());
-            //return View(await db.Worlds
-            //                    .Where(w => w.User.Id == currentUser.Id)
-            //                    .ToListAsync());
-        }
-
-        // GET: Worlds/Details/5
+        // GET: Factions/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            World world = await db.Worlds.FindAsync(id);
-            if (world == null)
+            Faction faction = await db.Factions.FindAsync(id);
+            if (faction == null)
             {
                 return HttpNotFound();
             }
-            return View(world);
+            return View(faction);
         }
 
-        // GET: Worlds/Create
-        public ActionResult Create()
+        // GET: Factions/Create
+        public ActionResult Create(int? worldID)
         {
+            TempData["WorldId"] = worldID;
             return View();
         }
 
-        // POST: Worlds/Create
+        // POST: Factions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "WorldId,Name,DescriptionShort")] World world)
+        public async Task<ActionResult> Create([Bind(Include = "FactionId,Name,DescriptionShort")] Faction faction)
         {
-            
             if (ModelState.IsValid)
             {
-                world.UserId = User.Identity.GetUserId();
-                db.Worlds.Add(world);
+                var refWorldId = (int)TempData["WorldId"];
+                faction.WorldId = refWorldId;
+                db.Factions.Add(faction);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(world);
+            return View(faction);
         }
 
-        // GET: Worlds/Edit/5
+        // GET: Factions/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            World world = await db.Worlds.FindAsync(id);
-            if (world == null)
+            Faction faction = await db.Factions.FindAsync(id);
+            if (faction == null)
             {
                 return HttpNotFound();
             }
-            return View(world);
+            return View(faction);
         }
 
-        // POST: Worlds/Edit/5
+        // POST: Factions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "WorldId,Name,DescriptionShort")] World world)
+        public async Task<ActionResult> Edit([Bind(Include = "FactionId,Name,DescriptionShort")] Faction faction)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(world).State = EntityState.Modified;
+                db.Entry(faction).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(world);
+            return View(faction);
         }
 
-        // GET: Worlds/Delete/5
+        // GET: Factions/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            World world = await db.Worlds.FindAsync(id);
-            if (world == null)
+            Faction faction = await db.Factions.FindAsync(id);
+            if (faction == null)
             {
                 return HttpNotFound();
             }
-            return View(world);
+            return View(faction);
         }
 
-        // POST: Worlds/Delete/5
+        // POST: Factions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            World world = await db.Worlds.FindAsync(id);
-            db.Worlds.Remove(world);
+            Faction faction = await db.Factions.FindAsync(id);
+            db.Factions.Remove(faction);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -138,15 +127,5 @@ namespace WorldForging.Controllers
             }
             base.Dispose(disposing);
         }
-
-        /// <summary>
-        /// Application DB context
-        /// </summary>
-        protected ApplicationDbContext ApplicationDbContext { get; set; }
-
-        /// <summary>
-        /// User manager - attached to application DB context
-        /// </summary>
-        protected UserManager<ApplicationUser> UserManager { get; set; }
     }
 }

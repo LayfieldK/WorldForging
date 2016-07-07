@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WorldForging.Models.World>
+﻿@model IEnumerable<WorldForging.Models.Faction>
 
 @{
     ViewBag.Title = "Index";
@@ -29,11 +29,9 @@
             @Html.DisplayFor(modelItem => item.DescriptionShort)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.WorldId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.WorldId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.WorldId }) |
-            @Html.ActionLink("Create Character", "Create", "Characters", new { worldId = item.WorldId }, null) |
-            @Html.ActionLink("Create Faction", "Create", "Factions", new { worldId = item.WorldId }, null) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.FactionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FactionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FactionId })
         </td>
     </tr>
 }

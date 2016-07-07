@@ -206,13 +206,34 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CharactersController.cs" />
+    <Compile Include="Controllers\FactionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WorldsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607052256577_InitialCreate.cs" />
+    <Compile Include="Migrations\201607052256577_InitialCreate.Designer.cs">
+      <DependentUpon>201607052256577_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607062238513_FactionAndCharacter.cs" />
+    <Compile Include="Migrations\201607062238513_FactionAndCharacter.Designer.cs">
+      <DependentUpon>201607062238513_FactionAndCharacter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607070142174_ChangedFKs.cs" />
+    <Compile Include="Migrations\201607070142174_ChangedFKs.Designer.cs">
+      <DependentUpon>201607070142174_ChangedFKs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607070155560_AddedNavPropToTwoTables.cs" />
+    <Compile Include="Migrations\201607070155560_AddedNavPropToTwoTables.Designer.cs">
+      <DependentUpon>201607070155560_AddedNavPropToTwoTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\Faction.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\World.cs" />
@@ -284,6 +305,16 @@
     <Content Include="Views\Worlds\Details.cshtml" />
     <Content Include="Views\Worlds\Edit.cshtml" />
     <Content Include="Views\Worlds\Index.cshtml" />
+    <Content Include="Views\Factions\Create.cshtml" />
+    <Content Include="Views\Factions\Delete.cshtml" />
+    <Content Include="Views\Factions\Details.cshtml" />
+    <Content Include="Views\Factions\Edit.cshtml" />
+    <Content Include="Views\Factions\Index.cshtml" />
+    <Content Include="Views\Characters\Create.cshtml" />
+    <Content Include="Views\Characters\Delete.cshtml" />
+    <Content Include="Views\Characters\Details.cshtml" />
+    <Content Include="Views\Characters\Edit.cshtml" />
+    <Content Include="Views\Characters\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -295,6 +326,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201607052256577_InitialCreate.resx">
+      <DependentUpon>201607052256577_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607062238513_FactionAndCharacter.resx">
+      <DependentUpon>201607062238513_FactionAndCharacter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607070142174_ChangedFKs.resx">
+      <DependentUpon>201607070142174_ChangedFKs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607070155560_AddedNavPropToTwoTables.resx">
+      <DependentUpon>201607070155560_AddedNavPropToTwoTables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

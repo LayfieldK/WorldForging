@@ -8,124 +8,110 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WorldForging.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WorldForging.Controllers
 {
-    public class WorldsController : Controller
+    public class CharactersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public WorldsController()
+        // GET: Characters
+        public async Task<ActionResult> Index(int? worldID)
         {
-            this.db = new ApplicationDbContext();
-            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.db));
+            return View(await db.Characters.Where(c => c.WorldId == worldID).ToListAsync());
         }
 
-        // GET: Worlds
-        public async Task<ActionResult> Index()
-        {
-            ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            return View(currentUser.Worlds.ToList());
-            //return View(await db.Worlds
-            //                    .Where(w => w.User.Id == currentUser.Id)
-            //                    .ToListAsync());
-        }
-
-        // GET: Worlds/Details/5
+        // GET: Characters/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            World world = await db.Worlds.FindAsync(id);
-            if (world == null)
+            Character character = await db.Characters.FindAsync(id);
+            if (character == null)
             {
                 return HttpNotFound();
             }
-            return View(world);
+            return View(character);
         }
 
-        // GET: Worlds/Create
-        public ActionResult Create()
+        // GET: Characters/Create
+        public ActionResult Create(int? worldID)
         {
             return View();
         }
 
-        // POST: Worlds/Create
+        // POST: Characters/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "WorldId,Name,DescriptionShort")] World world)
+        public async Task<ActionResult> Create([Bind(Include = "CharacterId,Name,DescriptionShort")] Character character)
         {
-            
             if (ModelState.IsValid)
             {
-                world.UserId = User.Identity.GetUserId();
-                db.Worlds.Add(world);
+                db.Characters.Add(character);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(world);
+            return View(character);
         }
 
-        // GET: Worlds/Edit/5
+        // GET: Characters/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            World world = await db.Worlds.FindAsync(id);
-            if (world == null)
+            Character character = await db.Characters.FindAsync(id);
+            if (character == null)
             {
                 return HttpNotFound();
             }
-            return View(world);
+            return View(character);
         }
 
-        // POST: Worlds/Edit/5
+        // POST: Characters/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "WorldId,Name,DescriptionShort")] World world)
+        public async Task<ActionResult> Edit([Bind(Include = "CharacterId,Name,DescriptionShort")] Character character)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(world).State = EntityState.Modified;
+                db.Entry(character).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(world);
+            return View(character);
         }
 
-        // GET: Worlds/Delete/5
+        // GET: Characters/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            World world = await db.Worlds.FindAsync(id);
-            if (world == null)
+            Character character = await db.Characters.FindAsync(id);
+            if (character == null)
             {
                 return HttpNotFound();
             }
-            return View(world);
+            return View(character);
         }
 
-        // POST: Worlds/Delete/5
+        // POST: Characters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            World world = await db.Worlds.FindAsync(id);
-            db.Worlds.Remove(world);
+            Character character = await db.Characters.FindAsync(id);
+            db.Characters.Remove(character);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -138,15 +124,5 @@ namespace WorldForging.Controllers
             }
             base.Dispose(disposing);
         }
-
-        /// <summary>
-        /// Application DB context
-        /// </summary>
-        protected ApplicationDbContext ApplicationDbContext { get; set; }
-
-        /// <summary>
-        /// User manager - attached to application DB context
-        /// </summary>
-        protected UserManager<ApplicationUser> UserManager { get; set; }
     }
 }
