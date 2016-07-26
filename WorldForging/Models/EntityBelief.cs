@@ -5,15 +5,14 @@ using System.Web;
 
 namespace WorldForging.Models
 {
-    public class Faction
+    public class EntityBelief
     {
-        public int FactionId { get; set; }
-
-        public string Name { get; set; }
-
-        public string DescriptionShort { get; set; }
+        public int EntityBeliefId {get;set;}
 
         public int EntityId { get; set; }
         public Entity Entity { get; set; }
+
+        public int BeliefId { get; set; }
+        public Belief Belief { get; set; }
     }
 }

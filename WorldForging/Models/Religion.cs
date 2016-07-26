@@ -7,5 +7,9 @@ namespace WorldForging.Models
 {
     public class Religion
     {
+        public int ReligionId { get; set; }
+
+        public int EntityId { get; set; }
+        public Entity Entity { get; set; }
     }
 }

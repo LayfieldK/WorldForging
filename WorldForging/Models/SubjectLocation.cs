@@ -5,13 +5,14 @@ using System.Web;
 
 namespace WorldForging.Models
 {
-    public class Reason
+    public class SubjectLocation
     {
-        public int ReasonId { get; set; }
+        public int SubjectLocationId { get; set; }
 
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
 
-        public virtual ICollection<ReasonEntity> ReasonEntities { get; set; }
+        public int LocationId { get; set; }
+        public Location Location { get; set; }
     }
 }

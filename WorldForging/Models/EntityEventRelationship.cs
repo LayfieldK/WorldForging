@@ -5,12 +5,12 @@ using System.Web;
 
 namespace WorldForging.Models
 {
-    public class EntityEvent
+    public class EntityEventRelationship
     {
-        public int EntityEventId { get; set; }
+        public int EntityEventRelationshipId { get; set; }
 
         public int EntityId { get; set; }
-        public Entity Entity { get; set; }
+        public Entity Entity {get;set;}
 
         public int EventId { get; set; }
         public Event Event { get; set; }

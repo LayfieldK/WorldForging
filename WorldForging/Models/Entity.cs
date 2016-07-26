@@ -7,5 +7,11 @@ namespace WorldForging.Models
 {
     public class Entity
     {
+        public int EntityId { get; set; }
+
+        public int SubjectId { get; set; }
+        public Subject Subject { get; set; }
+
+        public virtual ICollection<EntityBelief> EntityBeliefs { get; set; }
     }
 }
