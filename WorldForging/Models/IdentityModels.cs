@@ -38,5 +38,27 @@ namespace WorldForging.Models
         public System.Data.Entity.DbSet<WorldForging.Models.Faction> Factions { get; set; }
 
         public System.Data.Entity.DbSet<WorldForging.Models.Character> Characters { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Belief> Beliefs { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Subject> Subjects { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Culture> Cultures { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Entity> Entities { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Desire> Desires { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.WorldEvent> Events { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Group> Groups { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Location> Locations { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Race> Races { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Reason> Reasons { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Religion> Religions { get; set; }
     }
 }

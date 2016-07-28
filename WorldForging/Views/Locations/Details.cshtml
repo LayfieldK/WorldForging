@@ -1,4 +1,4 @@
-﻿@model WorldForging.Models.World
+﻿@model WorldForging.Models.Location
 
 @{
     ViewBag.Title = "Details";
@@ -7,9 +7,17 @@
 <h2>Details</h2>
 
 <div>
-    <h4>World</h4>
+    <h4>Location</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject.SubjectId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject.SubjectId)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -29,6 +37,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.WorldId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LocationId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -13,6 +13,6 @@ namespace WorldForging.Models
         public Entity Entity { get; set; }
 
         public int EventId { get; set; }
-        public Event Event { get; set; }
+        public WorldEvent Event { get; set; }
     }
 }

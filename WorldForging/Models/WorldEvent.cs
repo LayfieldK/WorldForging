@@ -5,9 +5,9 @@ using System.Web;
 
 namespace WorldForging.Models
 {
-    public class Event
+    public class WorldEvent
     {
-        public int EventId { get; set; }
+        public int WorldEventId { get; set; }
 
         public string Name { get; set; }
 

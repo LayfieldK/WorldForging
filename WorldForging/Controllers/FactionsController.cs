@@ -16,9 +16,10 @@ namespace WorldForging.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Factions
-        public async Task<ActionResult> Index(int? worldID)
+        public async Task<ActionResult> Index()
         {
-            return View(await db.Factions.Where(c => c.WorldId == worldID).ToListAsync());
+            var factions = db.Factions.Include(f => f.Entity);
+            return View(await factions.ToListAsync());
         }
 
         // GET: Factions/Details/5
@@ -37,9 +38,9 @@ namespace WorldForging.Controllers
         }
 
         // GET: Factions/Create
-        public ActionResult Create(int? worldID)
+        public ActionResult Create()
         {
-            TempData["WorldId"] = worldID;
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "EntityId");
             return View();
         }
 
@@ -48,17 +49,16 @@ namespace WorldForging.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "FactionId,Name,DescriptionShort")] Faction faction)
+        public async Task<ActionResult> Create([Bind(Include = "FactionId,Name,DescriptionShort,EntityId")] Faction faction)
         {
             if (ModelState.IsValid)
             {
-                var refWorldId = (int)TempData["WorldId"];
-                faction.WorldId = refWorldId;
                 db.Factions.Add(faction);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "EntityId", faction.EntityId);
             return View(faction);
         }
 
@@ -74,6 +74,7 @@ namespace WorldForging.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "EntityId", faction.EntityId);
             return View(faction);
         }
 
@@ -82,7 +83,7 @@ namespace WorldForging.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "FactionId,Name,DescriptionShort")] Faction faction)
+        public async Task<ActionResult> Edit([Bind(Include = "FactionId,Name,DescriptionShort,EntityId")] Faction faction)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +91,7 @@ namespace WorldForging.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "EntityId", faction.EntityId);
             return View(faction);
         }
 

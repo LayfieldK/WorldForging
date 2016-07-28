@@ -8,124 +8,115 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WorldForging.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WorldForging.Controllers
 {
-    public class WorldsController : Controller
+    public class SubjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public WorldsController()
-        {
-            this.db = new ApplicationDbContext();
-            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.db));
-        }
-
-        // GET: Worlds
+        // GET: Subjects
         public async Task<ActionResult> Index()
         {
-            ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            return View(currentUser.Worlds.ToList());
-            //return View(await db.Worlds
-            //                    .Where(w => w.User.Id == currentUser.Id)
-            //                    .ToListAsync());
+            var subjects = db.Subjects.Include(s => s.World);
+            return View(await subjects.ToListAsync());
         }
 
-        // GET: Worlds/Details/5
+        // GET: Subjects/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            World world = await db.Worlds.FindAsync(id);
-            if (world == null)
+            Subject subject = await db.Subjects.FindAsync(id);
+            if (subject == null)
             {
                 return HttpNotFound();
             }
-            return View(world);
+            return View(subject);
         }
 
-        // GET: Worlds/Create
+        // GET: Subjects/Create
         public ActionResult Create()
         {
+            ViewBag.WorldId = new SelectList(db.Worlds, "WorldId", "Name");
             return View();
         }
 
-        // POST: Worlds/Create
+        // POST: Subjects/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "WorldId,Name,DescriptionShort")] World world)
+        public async Task<ActionResult> Create([Bind(Include = "SubjectId,WorldId")] Subject subject)
         {
-            
             if (ModelState.IsValid)
             {
-                world.UserId = User.Identity.GetUserId();
-                db.Worlds.Add(world);
+                db.Subjects.Add(subject);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(world);
+            ViewBag.WorldId = new SelectList(db.Worlds, "WorldId", "Name", subject.WorldId);
+            return View(subject);
         }
 
-        // GET: Worlds/Edit/5
+        // GET: Subjects/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            World world = await db.Worlds.FindAsync(id);
-            if (world == null)
+            Subject subject = await db.Subjects.FindAsync(id);
+            if (subject == null)
             {
                 return HttpNotFound();
             }
-            return View(world);
+            ViewBag.WorldId = new SelectList(db.Worlds, "WorldId", "Name", subject.WorldId);
+            return View(subject);
         }
 
-        // POST: Worlds/Edit/5
+        // POST: Subjects/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "WorldId,Name,DescriptionShort")] World world)
+        public async Task<ActionResult> Edit([Bind(Include = "SubjectId,WorldId")] Subject subject)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(world).State = EntityState.Modified;
+                db.Entry(subject).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(world);
+            ViewBag.WorldId = new SelectList(db.Worlds, "WorldId", "Name", subject.WorldId);
+            return View(subject);
         }
 
-        // GET: Worlds/Delete/5
+        // GET: Subjects/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            World world = await db.Worlds.FindAsync(id);
-            if (world == null)
+            Subject subject = await db.Subjects.FindAsync(id);
+            if (subject == null)
             {
                 return HttpNotFound();
             }
-            return View(world);
+            return View(subject);
         }
 
-        // POST: Worlds/Delete/5
+        // POST: Subjects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            World world = await db.Worlds.FindAsync(id);
-            db.Worlds.Remove(world);
+            Subject subject = await db.Subjects.FindAsync(id);
+            db.Subjects.Remove(subject);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -138,15 +129,5 @@ namespace WorldForging.Controllers
             }
             base.Dispose(disposing);
         }
-
-        /// <summary>
-        /// Application DB context
-        /// </summary>
-        protected ApplicationDbContext ApplicationDbContext { get; set; }
-
-        /// <summary>
-        /// User manager - attached to application DB context
-        /// </summary>
-        protected UserManager<ApplicationUser> UserManager { get; set; }
     }
 }

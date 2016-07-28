@@ -16,9 +16,10 @@ namespace WorldForging.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Characters
-        public async Task<ActionResult> Index(int? worldID)
+        public async Task<ActionResult> Index()
         {
-            return View(await db.Characters.Where(c => c.WorldId == worldID).ToListAsync());
+            var characters = db.Characters.Include(c => c.Subject);
+            return View(await characters.ToListAsync());
         }
 
         // GET: Characters/Details/5
@@ -37,9 +38,9 @@ namespace WorldForging.Controllers
         }
 
         // GET: Characters/Create
-        public ActionResult Create(int? worldID)
+        public ActionResult Create()
         {
-            TempData["WorldId"] = worldID;
+            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId");
             return View();
         }
 
@@ -48,17 +49,16 @@ namespace WorldForging.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CharacterId,Name,DescriptionShort")] Character character)
+        public async Task<ActionResult> Create([Bind(Include = "CharacterId,Name,DescriptionShort,SubjectId")] Character character)
         {
             if (ModelState.IsValid)
             {
-                var refWorldId = (int)TempData["WorldId"];
-                character.WorldId = refWorldId;
                 db.Characters.Add(character);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId", character.SubjectId);
             return View(character);
         }
 
@@ -74,6 +74,7 @@ namespace WorldForging.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId", character.SubjectId);
             return View(character);
         }
 
@@ -82,7 +83,7 @@ namespace WorldForging.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "CharacterId,Name,DescriptionShort")] Character character)
+        public async Task<ActionResult> Edit([Bind(Include = "CharacterId,Name,DescriptionShort,SubjectId")] Character character)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +91,7 @@ namespace WorldForging.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId", character.SubjectId);
             return View(character);
         }
 
