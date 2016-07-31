@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WorldForging.Models.Entity>
+﻿@model IEnumerable<WorldForging.Models.World>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Subject.SubjectId)
+            @Html.DisplayNameFor(model => model.User.Email)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -26,7 +26,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Subject.SubjectId)
+            @Html.DisplayFor(modelItem => item.User.Email)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EntityId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EntityId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EntityId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.WorldId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WorldId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WorldId })
         </td>
     </tr>
 }

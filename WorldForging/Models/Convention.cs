@@ -5,14 +5,11 @@ using System.Web;
 
 namespace WorldForging.Models
 {
-    public class SubjectLocation
+    public class Convention
     {
-        public int SubjectLocationId { get; set; }
+        public int ConventionId { get; set; }
 
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
-
-        public int LocationId { get; set; }
-        public Location Location { get; set; }
     }
 }

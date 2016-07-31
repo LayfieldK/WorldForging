@@ -60,5 +60,7 @@ namespace WorldForging.Models
         public System.Data.Entity.DbSet<WorldForging.Models.Reason> Reasons { get; set; }
 
         public System.Data.Entity.DbSet<WorldForging.Models.Religion> Religions { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Convention> Conventions { get; set; }
     }
 }

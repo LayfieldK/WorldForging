@@ -11,5 +11,8 @@ namespace WorldForging.Models
 
         public int ReasonId { get; set; }
         public Reason Reason { get; set; }
+
+        public int EntityId { get; set; }
+        public Entity Entity { get; set; }
     }
 }

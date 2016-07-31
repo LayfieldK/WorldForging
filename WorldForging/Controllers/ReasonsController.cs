@@ -49,7 +49,7 @@ namespace WorldForging.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ReasonId,SubjectId")] Reason reason)
+        public async Task<ActionResult> Create([Bind(Include = "ReasonId,Description,SubjectId")] Reason reason)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace WorldForging.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ReasonId,SubjectId")] Reason reason)
+        public async Task<ActionResult> Edit([Bind(Include = "ReasonId,Description,SubjectId")] Reason reason)
         {
             if (ModelState.IsValid)
             {

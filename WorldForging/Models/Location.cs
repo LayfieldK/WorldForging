@@ -13,7 +13,7 @@ namespace WorldForging.Models
 
         public string DescriptionShort { get; set; }
 
-        public int SubjectId { get; set; }
-        public Subject Subject { get; set; }
+        public int EntityId { get; set; }
+        public Entity Entity { get; set; }
     }
 }

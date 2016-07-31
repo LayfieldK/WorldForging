@@ -9,11 +9,7 @@ namespace WorldForging.Models
     {
         public int WorldEventId { get; set; }
 
-        public string Name { get; set; }
-
-        public string DescriptionShort { get; set; }
-
-        public int SubjectId { get; set; }
-        public Subject Subject { get; set; }
+        public int EntityId { get; set; }
+        public Entity Entity { get; set; }
     }
 }

@@ -9,6 +9,8 @@ namespace WorldForging.Models
     {
         public int BeliefRelationshipId { get; set; }
 
+        public string Description { get; set; }
+
         public virtual ICollection<EntityBelief> EntityBeliefs { get; set; }
     }
 }

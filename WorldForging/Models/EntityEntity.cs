@@ -17,5 +17,8 @@ namespace WorldForging.Models
         public int Entity2Id { get; set; }
         [ForeignKey("Entity2Id")]
         public Entity Entity2 { get; set; }
+
+        public int EntityEntityRelationshipId { get; set; }
+        public EntityEntityRelationship EntityEntityRelationship { get; set; }
     }
 }

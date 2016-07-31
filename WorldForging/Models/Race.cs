@@ -9,7 +9,7 @@ namespace WorldForging.Models
     {
         public int RaceId { get; set; }
 
-        public int EntityId { get; set; }
-        public Entity Entity { get; set; }
+        public int GroupId { get; set; }
+        public Group Group { get; set; }
     }
 }

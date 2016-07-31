@@ -13,7 +13,7 @@ namespace WorldForging.Models
 
         public string DescriptionShort { get; set; }
 
-        public int EntityId { get; set; }
-        public Entity Entity { get; set; }
+        public int GroupId { get; set; }
+        public Group Group { get; set; }
     }
 }

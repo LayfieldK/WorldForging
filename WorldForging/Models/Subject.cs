@@ -11,8 +11,7 @@ namespace WorldForging.Models
 
         public int WorldId { get; set; }
         public World World { get; set; }
-
-        public virtual ICollection<SubjectLocation> SubjectLocations { get; set; }
+        
         
     }
 }

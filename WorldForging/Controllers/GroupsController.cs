@@ -40,7 +40,7 @@ namespace WorldForging.Controllers
         // GET: Groups/Create
         public ActionResult Create()
         {
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "EntityId");
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace WorldForging.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "EntityId", group.EntityId);
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", group.EntityId);
             return View(group);
         }
 
@@ -74,7 +74,7 @@ namespace WorldForging.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "EntityId", group.EntityId);
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", group.EntityId);
             return View(group);
         }
 
@@ -91,7 +91,7 @@ namespace WorldForging.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "EntityId", group.EntityId);
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", group.EntityId);
             return View(group);
         }
 

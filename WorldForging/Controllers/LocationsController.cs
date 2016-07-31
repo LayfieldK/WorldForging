@@ -18,7 +18,7 @@ namespace WorldForging.Controllers
         // GET: Locations
         public async Task<ActionResult> Index()
         {
-            var locations = db.Locations.Include(l => l.Subject);
+            var locations = db.Locations.Include(l => l.Entity);
             return View(await locations.ToListAsync());
         }
 
@@ -40,7 +40,7 @@ namespace WorldForging.Controllers
         // GET: Locations/Create
         public ActionResult Create()
         {
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId");
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name");
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace WorldForging.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "LocationId,Name,DescriptionShort,SubjectId")] Location location)
+        public async Task<ActionResult> Create([Bind(Include = "LocationId,Name,DescriptionShort,EntityId")] Location location)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace WorldForging.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId", location.SubjectId);
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", location.EntityId);
             return View(location);
         }
 
@@ -74,7 +74,7 @@ namespace WorldForging.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId", location.SubjectId);
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", location.EntityId);
             return View(location);
         }
 
@@ -83,7 +83,7 @@ namespace WorldForging.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "LocationId,Name,DescriptionShort,SubjectId")] Location location)
+        public async Task<ActionResult> Edit([Bind(Include = "LocationId,Name,DescriptionShort,EntityId")] Location location)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace WorldForging.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId", location.SubjectId);
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", location.EntityId);
             return View(location);
         }
 

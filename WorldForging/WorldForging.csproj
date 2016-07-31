@@ -208,19 +208,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BeliefsController.cs" />
     <Compile Include="Controllers\CharactersController.cs" />
-    <Compile Include="Controllers\CulturesController.cs" />
+    <Compile Include="Controllers\ConventionsController.cs" />
     <Compile Include="Controllers\DesiresController.cs" />
     <Compile Include="Controllers\EntitiesController.cs" />
-    <Compile Include="Controllers\FactionsController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\RacesController.cs" />
     <Compile Include="Controllers\ReasonsController.cs" />
-    <Compile Include="Controllers\ReligionsController.cs" />
-    <Compile Include="Controllers\SubjectsController.cs" />
-    <Compile Include="Controllers\WorldEventsController.cs" />
+    <Compile Include="Controllers\WorldsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -246,16 +242,16 @@
     <Compile Include="Models\BeliefEntity.cs" />
     <Compile Include="Models\BeliefRelationship.cs" />
     <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\Convention.cs" />
     <Compile Include="Models\EntityBelief.cs" />
+    <Compile Include="Models\EntityConvention.cs" />
     <Compile Include="Models\EntityEntity.cs" />
     <Compile Include="Models\EntityEntityRelationship.cs" />
     <Compile Include="Models\EntityEntityRelationshipReason.cs" />
     <Compile Include="Models\EntityDesire.cs" />
     <Compile Include="Models\EntityDesireReason.cs" />
-    <Compile Include="Models\CharacterEvent.cs" />
+    <Compile Include="Models\EntityWorldEvent.cs" />
     <Compile Include="Models\EntityWorldEventRelationship.cs" />
-    <Compile Include="Models\SubjectLocation.cs" />
-    <Compile Include="Models\SubjectLocationRelationship.cs" />
     <Compile Include="Models\Culture.cs" />
     <Compile Include="Models\Desire.cs" />
     <Compile Include="Models\Entity.cs" />
@@ -270,7 +266,6 @@
     <Compile Include="Models\ReasonEntity.cs" />
     <Compile Include="Models\Religion.cs" />
     <Compile Include="Models\Subject.cs" />
-    <Compile Include="Models\SubjectLocationRelationshipReason.cs" />
     <Compile Include="Models\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -400,6 +395,16 @@
     <Content Include="Views\Subjects\Details.cshtml" />
     <Content Include="Views\Subjects\Edit.cshtml" />
     <Content Include="Views\Subjects\Index.cshtml" />
+    <Content Include="Views\Conventions\Create.cshtml" />
+    <Content Include="Views\Conventions\Delete.cshtml" />
+    <Content Include="Views\Conventions\Details.cshtml" />
+    <Content Include="Views\Conventions\Edit.cshtml" />
+    <Content Include="Views\Conventions\Index.cshtml" />
+    <Content Include="Views\Worlds\Create.cshtml" />
+    <Content Include="Views\Worlds\Delete.cshtml" />
+    <Content Include="Views\Worlds\Details.cshtml" />
+    <Content Include="Views\Worlds\Edit.cshtml" />
+    <Content Include="Views\Worlds\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

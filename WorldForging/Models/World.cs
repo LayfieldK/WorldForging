@@ -12,13 +12,15 @@ namespace WorldForging.Models
 
         public string Name { get; set; }
 
-        public string DescriptionShort { get; set; }
+        public string Description { get; set; }
 
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public ApplicationUser User { get; set; }
 
         public virtual ICollection<Entity> Entities { get; set; }
+
+        public virtual ICollection<Subject> Subjects { get; set; }
 
     }
 }

@@ -11,5 +11,7 @@ namespace WorldForging.Models
 
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
+
+        public virtual ICollection<EntityDesire> EntityDesires { get; set; }
     }
 }

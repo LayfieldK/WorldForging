@@ -9,10 +9,6 @@ namespace WorldForging.Models
     {
         public int EntityWorldEventRelationshipId { get; set; }
 
-        public int EntityId { get; set; }
-        public Entity Entity {get;set;}
-
-        public int WorldEventId { get; set; }
-        public WorldEvent WorldEvent { get; set; }
+        public string Description { get; set; }
     }
 }

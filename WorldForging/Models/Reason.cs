@@ -9,6 +9,8 @@ namespace WorldForging.Models
     {
         public int ReasonId { get; set; }
 
+        public string Description { get; set; }
+
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
 
