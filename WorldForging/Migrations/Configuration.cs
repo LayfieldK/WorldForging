@@ -122,7 +122,7 @@ namespace WorldForging.Migrations
                 new Entity()
                 {
                     Subject = subjects[3],
-                    Name = "Merry Brandywine"
+                    Name = "Merry Brandybuck"
                 },
                 //0
                 new Entity()
@@ -238,6 +238,132 @@ namespace WorldForging.Migrations
 
             characters.ForEach(c => context.Characters.AddOrUpdate(c));
 
+            var entityRMemberOfGroup = new EntityEntityRelationship();
+            var entityRIsOfRace = new EntityEntityRelationship();
+
+            var entityEntities = new List<EntityEntity>() {
+                new EntityEntity() 
+                {
+                    Entity1 = entities[0],
+                    Entity2 = entities[10],
+                    EntityEntityRelationship = entityRMemberOfGroup
+                },
+                new EntityEntity()
+                {
+                    Entity1 = entities[1],
+                    Entity2 = entities[10],
+                    EntityEntityRelationship = entityRMemberOfGroup
+                },
+                new EntityEntity()
+                {
+                    Entity1 = entities[2],
+                    Entity2 = entities[10],
+                    EntityEntityRelationship = entityRMemberOfGroup
+                },
+                new EntityEntity()
+                {
+                    Entity1 = entities[3],
+                    Entity2 = entities[10],
+                    EntityEntityRelationship = entityRMemberOfGroup
+                },
+                new EntityEntity()
+                {
+                    Entity1 = entities[4],
+                    Entity2 = entities[10],
+                    EntityEntityRelationship = entityRMemberOfGroup
+                },
+                new EntityEntity()
+                {
+                    Entity1 = entities[5],
+                    Entity2 = entities[10],
+                    EntityEntityRelationship = entityRMemberOfGroup
+                },
+                new EntityEntity()
+                {
+                    Entity1 = entities[6],
+                    Entity2 = entities[10],
+                    EntityEntityRelationship = entityRMemberOfGroup
+                },
+                new EntityEntity()
+                {
+                    Entity1 = entities[7],
+                    Entity2 = entities[10],
+                    EntityEntityRelationship = entityRMemberOfGroup
+                },
+                new EntityEntity()
+                {
+                    Entity1 = entities[8],
+                    Entity2 = entities[10],
+                    EntityEntityRelationship = entityRMemberOfGroup
+                },
+                //hobbits
+                new EntityEntity()
+                {
+                    Entity1 = entities[0],
+                    Entity2 = entities[11],
+                    EntityEntityRelationship = entityRIsOfRace 
+                },
+                new EntityEntity()
+                {
+                    Entity1 = entities[1],
+                    Entity2 = entities[11],
+                    EntityEntityRelationship = entityRIsOfRace
+                },
+                new EntityEntity()
+                {
+                    Entity1 = entities[3],
+                    Entity2 = entities[11],
+                    EntityEntityRelationship = entityRIsOfRace
+                },
+                new EntityEntity()
+                {
+                    Entity1 = entities[4],
+                    Entity2 = entities[11],
+                    EntityEntityRelationship = entityRIsOfRace
+                },
+                //men
+                new EntityEntity()
+                {
+                    Entity1 = entities[5],
+                    Entity2 = entities[12],
+                    EntityEntityRelationship = entityRIsOfRace
+                },
+                new EntityEntity()
+                {
+                    Entity1 = entities[8],
+                    Entity2 = entities[12],
+                    EntityEntityRelationship = entityRIsOfRace
+                },
+                //elves
+                new EntityEntity()
+                {
+                    Entity1 = entities[6],
+                    Entity2 = entities[13],
+                    EntityEntityRelationship = entityRIsOfRace
+                },
+                //dwarves
+                new EntityEntity()
+                {
+                    Entity1 = entities[7],
+                    Entity2 = entities[14],
+                    EntityEntityRelationship = entityRIsOfRace
+                }
+            };
+
+            entities[0].EntityEntities = new List<EntityEntity> { entityEntities[0], entityEntities[9] };
+            entities[1].EntityEntities = new List<EntityEntity> { entityEntities[1], entityEntities[10] };
+            entities[2].EntityEntities = new List<EntityEntity> { entityEntities[2] };
+            entities[3].EntityEntities = new List<EntityEntity> { entityEntities[3], entityEntities[11] };
+            entities[4].EntityEntities = new List<EntityEntity> { entityEntities[4], entityEntities[12] };
+            entities[5].EntityEntities = new List<EntityEntity> { entityEntities[5], entityEntities[13] };
+            entities[6].EntityEntities = new List<EntityEntity> { entityEntities[6], entityEntities[15] };
+            entities[7].EntityEntities = new List<EntityEntity> { entityEntities[7], entityEntities[16] };
+            entities[8].EntityEntities = new List<EntityEntity> { entityEntities[8], entityEntities[14] };
+
+            
+
+           
+
             var groups = new List<Group> {
                 new Group()
                 {
@@ -285,16 +411,7 @@ namespace WorldForging.Migrations
 
             races.ForEach(c => context.Races.AddOrUpdate(c));
 
-            var entityEntities = new List<EntityEntity>
-            {
-                new Models.EntityEntity()
-                {
-                    Entity1=entities[0],
-                    Entity2=entities[10],
-                    EntityEntityRelationship=null
-                }
-            };
-            
+                      
 
         }
         

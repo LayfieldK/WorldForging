@@ -15,10 +15,19 @@ namespace WorldForging.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Characters
-        public async Task<ActionResult> Index()
+
+
+        // GET: Characters?WorldId=5
+        public async Task<ActionResult> Index(int worldId)
         {
-            var characters = db.Characters.Include(c => c.Entity);
+
+            IQueryable<Character> characters = db.Characters
+                .Where(c => c.Entity.Subject.WorldId == worldId);
+            //World world = await db.Worlds.FindAsync(idworldId;
+            //if (world == null)
+            //{
+            //    return HttpNotFound();
+            //}
             return View(await characters.ToListAsync());
         }
 
