@@ -42,7 +42,18 @@ namespace WorldForging.Controllers
             {
                 return HttpNotFound();
             }
-            return View(world);
+
+            var worldDetailsVM = new WorldsDetailsViewModel();
+            worldDetailsVM.World = world;
+            worldDetailsVM.Entities = db.Entities.Where(c => c.Subject.WorldId == id).ToList();
+            worldDetailsVM.Characters= db.Characters.Where(c => c.Entity.Subject.WorldId == id).ToList();
+            worldDetailsVM.Races = db.Races.Where(c => c.Group.Entity.Subject.WorldId == id).ToList();
+            worldDetailsVM.Locations = db.Locations.Where(c => c.Entity.Subject.WorldId == id).ToList();
+            worldDetailsVM.Items = db.Items.Where(c => c.Entity.Subject.WorldId == id).ToList();
+            worldDetailsVM.Groups = db.Groups.Where(c => c.Entity.Subject.WorldId == id).ToList();
+            worldDetailsVM.Events = db.Events.Where(c => c.Entity.Subject.WorldId == id).ToList();
+            worldDetailsVM.Subjects = db.Subjects.Where(c => c.WorldId == id).ToList();
+            return View(worldDetailsVM);
         }
 
         // GET: Worlds/Create

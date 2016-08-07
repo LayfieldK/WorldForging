@@ -62,5 +62,7 @@ namespace WorldForging.Models
         public System.Data.Entity.DbSet<WorldForging.Models.Religion> Religions { get; set; }
 
         public System.Data.Entity.DbSet<WorldForging.Models.Convention> Conventions { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.Item> Items { get; set; }
     }
 }

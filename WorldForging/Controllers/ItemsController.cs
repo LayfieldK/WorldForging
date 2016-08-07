@@ -11,133 +11,112 @@ using WorldForging.Models;
 
 namespace WorldForging.Controllers
 {
-    public class CharactersController : Controller
+    public class ItemsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-
-
-        // GET: Characters?WorldId=5
-        public async Task<ActionResult> Index(int? worldId, int? characterId)
+        // GET: Items
+        public async Task<ActionResult> Index()
         {
-            IQueryable<Character> characters;
-            if (worldId != null)
-            {
-                characters = db.Characters
-               .Where(c => c.Entity.Subject.WorldId == worldId);
-                return View(await characters.ToListAsync());
-            }
-            if (characterId != null)
-            {
-                characters = db.Characters
-               .Where(c => c.CharacterId == characterId);
-                return View(await characters.ToListAsync());
-            }
-
-            //World world = await db.Worlds.FindAsync(idworldId;
-            //if (world == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var items = db.Items.Include(i => i.Entity);
+            return View(await items.ToListAsync());
         }
 
-
-        // GET: Characters/Details/5
+        // GET: Items/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Character character = await db.Characters.FindAsync(id);
-            if (character == null)
+            Item item = await db.Items.FindAsync(id);
+            if (item == null)
             {
                 return HttpNotFound();
             }
-            return View(character);
+            return View(item);
         }
 
-        // GET: Characters/Create
+        // GET: Items/Create
         public ActionResult Create()
         {
             ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name");
             return View();
         }
 
-        // POST: Characters/Create
+        // POST: Items/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CharacterId,EntityId")] Character character)
+        public async Task<ActionResult> Create([Bind(Include = "ItemId,EntityId")] Item item)
         {
             if (ModelState.IsValid)
             {
-                db.Characters.Add(character);
+                db.Items.Add(item);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", character.EntityId);
-            return View(character);
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", item.EntityId);
+            return View(item);
         }
 
-        // GET: Characters/Edit/5
+        // GET: Items/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Character character = await db.Characters.FindAsync(id);
-            if (character == null)
+            Item item = await db.Items.FindAsync(id);
+            if (item == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", character.EntityId);
-            return View(character);
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", item.EntityId);
+            return View(item);
         }
 
-        // POST: Characters/Edit/5
+        // POST: Items/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "CharacterId,EntityId")] Character character)
+        public async Task<ActionResult> Edit([Bind(Include = "ItemId,EntityId")] Item item)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(character).State = EntityState.Modified;
+                db.Entry(item).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", character.EntityId);
-            return View(character);
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", item.EntityId);
+            return View(item);
         }
 
-        // GET: Characters/Delete/5
+        // GET: Items/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Character character = await db.Characters.FindAsync(id);
-            if (character == null)
+            Item item = await db.Items.FindAsync(id);
+            if (item == null)
             {
                 return HttpNotFound();
             }
-            return View(character);
+            return View(item);
         }
 
-        // POST: Characters/Delete/5
+        // POST: Items/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Character character = await db.Characters.FindAsync(id);
-            db.Characters.Remove(character);
+            Item item = await db.Items.FindAsync(id);
+            db.Items.Remove(item);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
