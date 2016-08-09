@@ -261,14 +261,18 @@
     <Compile Include="Migrations\201608061910347_Added DesireEntity.Designer.cs">
       <DependentUpon>201608061910347_Added DesireEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608080025143_Change xxxEntities to xxxSubjects.cs" />
+    <Compile Include="Migrations\201608080025143_Change xxxEntities to xxxSubjects.Designer.cs">
+      <DependentUpon>201608080025143_Change xxxEntities to xxxSubjects.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Belief.cs" />
-    <Compile Include="Models\BeliefEntity.cs" />
+    <Compile Include="Models\BeliefSubject.cs" />
     <Compile Include="Models\BeliefRelationship.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\Convention.cs" />
-    <Compile Include="Models\DesireEntity.cs" />
+    <Compile Include="Models\DesireSubject.cs" />
     <Compile Include="Models\EntityBelief.cs" />
     <Compile Include="Models\EntityConvention.cs" />
     <Compile Include="Models\EntityEntity.cs" />
@@ -276,8 +280,6 @@
     <Compile Include="Models\EntityEntityRelationshipReason.cs" />
     <Compile Include="Models\EntityDesire.cs" />
     <Compile Include="Models\EntityDesireReason.cs" />
-    <Compile Include="Models\EntityWorldEvent.cs" />
-    <Compile Include="Models\EntityWorldEventRelationship.cs" />
     <Compile Include="Models\Culture.cs" />
     <Compile Include="Models\Desire.cs" />
     <Compile Include="Models\Entity.cs" />
@@ -290,7 +292,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Race.cs" />
     <Compile Include="Models\Reason.cs" />
-    <Compile Include="Models\ReasonEntity.cs" />
+    <Compile Include="Models\ReasonSubject.cs" />
     <Compile Include="Models\Religion.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\World.cs" />
@@ -481,6 +483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608061910347_Added DesireEntity.resx">
       <DependentUpon>201608061910347_Added DesireEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608080025143_Change xxxEntities to xxxSubjects.resx">
+      <DependentUpon>201608080025143_Change xxxEntities to xxxSubjects.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

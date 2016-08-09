@@ -14,6 +14,6 @@ namespace WorldForging.Models
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
 
-        public virtual ICollection<ReasonEntity> ReasonEntities { get; set; }
+        public virtual ICollection<ReasonSubject> ReasonSubjects { get; set; }
     }
 }

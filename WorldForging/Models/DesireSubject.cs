@@ -5,14 +5,14 @@ using System.Web;
 
 namespace WorldForging.Models
 {
-    public class DesireEntity
+    public class DesireSubject
     {
-        public int DesireEntityId { get; set; }
+        public int DesireSubjectId { get; set; }
 
         public int DesireId { get; set; }
         public Desire Desire { get; set; }
 
-        public int EntityId { get; set; }
-        public Entity Entity { get; set; }
+        public int? SubjectId { get; set; }
+        public Subject Subject { get; set; }
     }
 }

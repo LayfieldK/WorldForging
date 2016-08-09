@@ -589,17 +589,17 @@ namespace WorldForging.Migrations
             #endregion
 
             #region DesireEntities
-            var desireEntities = new List<DesireEntity>() {
-                new DesireEntity()
+            var desireSubjects = new List<DesireSubject>() {
+                new DesireSubject()
                 {
-                    Entity = entities[18]
+                    Subject = subjects[19]
                 },
-                new DesireEntity()
+                new DesireSubject()
                 {
-                    Entity = entities[16]
+                    Subject = subjects[16]
                 }
             };
-            desires[0].DesireEntities = new List<DesireEntity> { desireEntities[0], desireEntities[1] };
+            desires[0].DesireSubjects = new List<DesireSubject> { desireSubjects[0], desireSubjects[1] };
 
             #endregion
 

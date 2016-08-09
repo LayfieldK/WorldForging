@@ -23,8 +23,7 @@ namespace WorldForging.Models
         public virtual ICollection<EntityConvention> EntityConventions { get; set; }
 
         public virtual ICollection<EntityEntity> EntityEntities { get; set; }
-
-        public virtual ICollection<EntityWorldEvent> EntityWorldEvents { get; set; }
+        
 
     }
 }
