@@ -58,7 +58,7 @@ namespace WorldForging.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId", belief.SubjectId);
+            
             return View(belief);
         }
 
@@ -74,7 +74,6 @@ namespace WorldForging.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId", belief.SubjectId);
             return View(belief);
         }
 
@@ -91,7 +90,6 @@ namespace WorldForging.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId", belief.SubjectId);
             return View(belief);
         }
 

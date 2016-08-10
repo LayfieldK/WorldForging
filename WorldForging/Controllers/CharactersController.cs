@@ -24,7 +24,7 @@ namespace WorldForging.Controllers
             if (worldId != null)
             {
                 characters = db.Characters
-               .Where(c => c.Entity.Subject.WorldId == worldId);
+               .Where(c => c.Entity.WorldId == worldId);
                 return View(await characters.ToListAsync());
             }
             if (characterId != null)

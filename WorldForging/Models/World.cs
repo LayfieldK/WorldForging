@@ -20,5 +20,8 @@ namespace WorldForging.Models
 
         public virtual ICollection<Subject> Subjects { get; set; }
 
+
+        public virtual ICollection<Entity> Entities { get; set; }
+
     }
 }

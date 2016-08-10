@@ -13,8 +13,8 @@ namespace WorldForging.Models
 
         public string Description { get; set; }
 
-        public int? SubjectId { get; set; }
-        public Subject Subject { get; set; }
+        public int? WorldId { get; set; }
+        public World World { get; set; }
 
         public virtual ICollection<EntityBelief> EntityBeliefs { get; set; }
 

@@ -39,250 +39,7 @@ namespace WorldForging.Migrations
 
             #region subjects
             var subjects = new List<Subject> {
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[1]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
-                new Subject()
-                {
-                    World = worlds[0]
-                },
+                
                 new Subject()
                 {
                     World = worlds[0]
@@ -297,134 +54,134 @@ namespace WorldForging.Migrations
                 //0
                 new Entity()
                 {
-                    Subject = subjects[0],
-                    Name = "Frodo Baggins"
+                    Name = "Frodo Baggins",
+                    World = worlds[0]
                 },
                 //1
                 new Entity()
                 {
-                    Subject = subjects[1],
-                    Name = "Pippin Took"
+                    Name = "Pippin Took",
+                    World = worlds[0]
                 },
                 //2
                 new Entity()
                 {
-                    Subject = subjects[2],
-                    Name = "Gandalf"
+                    Name = "Gandalf",
+                    World = worlds[0]
                 },
                 //3
                 new Entity()
                 {
-                    Subject = subjects[3],
-                    Name = "Merry Brandybuck"
+                    Name = "Merry Brandybuck",
+                    World = worlds[0]
                 },
                 //4
                 new Entity()
                 {
-                    Subject = subjects[4],
-                    Name = "Samwise Gamgee"
+                    Name = "Samwise Gamgee",
+                    World = worlds[0]
                 },
                 //5
                 new Entity()
                 {
-                    Subject = subjects[5],
-                    Name = "Aragorn"
+                    Name = "Aragorn",
+                    World = worlds[0]
                 },
                 //6
                 new Entity()
                 {
-                    Subject = subjects[6],
-                    Name = "Legolas"
+                    Name = "Legolas",
+                    World = worlds[0]
                 },
                 //7
                 new Entity()
                 {
-                    Subject = subjects[7],
-                    Name = "Gimli"
+                    Name = "Gimli",
+                    World = worlds[0]
                 },
                 //8
                 new Entity()
                 {
-                    Subject = subjects[8],
-                    Name = "Boromir"
+                    Name = "Boromir",
+                    World = worlds[0]
                 },
                 //9
                 new Entity()
                 {
-                    Subject = subjects[9],
-                    Name = "Alduin"
+                    Name = "Alduin",
+                    World = worlds[1]
                 },
                 //10
                 new Entity()
                 {
-                    Subject = subjects[10],
-                    Name = "The Fellowship of the Ring"
+                    Name = "The Fellowship of the Ring",
+                    World = worlds[0]
                 },
                 //11
                 new Entity()
                 {
-                    Subject = subjects[11],
-                    Name = "Hobbits"
+                    Name = "Hobbits",
+                    World = worlds[0]
                 },
                 //12
                 new Entity()
                 {
-                    Subject = subjects[12],
-                    Name = "Men"
+                    Name = "Men",
+                    World = worlds[0]
                 },
                 //13
                 new Entity()
                 {
-                    Subject = subjects[13],
-                    Name = "Elves"
+                    Name = "Elves",
+                    World = worlds[0]
                 },
                 //14
                 new Entity()
                 {
-                    Subject = subjects[14],
-                    Name = "Dwarves"
+                    Name = "Dwarves",
+                    World = worlds[0]
                 },
                 //15
                 new Entity()
                 {
-                    Subject = subjects[15],
-                    Name = "The Shire"
+                    Name = "The Shire",
+                    World = worlds[0]
                 },
                 //16
                 new Entity()
                 {
-                    Subject = subjects[16],
-                    Name = "Mordor"
+                    Name = "Mordor",
+                    World = worlds[0]
                 },
                 //17
                 new Entity()
                 {
-                    Subject = subjects[17],
-                    Name = "Rivendell"
+                    Name = "Rivendell",
+                    World = worlds[0]
                 },
                 //18
                 new Entity()
                 {
-                    Subject = subjects[19],
-                    Name = "The One Ring"
+                    Name = "The One Ring",
+                    World = worlds[0]
                 },
                 //19
                 new Entity()
                 {
-                    Subject = subjects[19],
-                    Name = "Forming of the Fellowship of the Ring"
+                    Name = "Forming of the Fellowship of the Ring",
+                    World = worlds[0]
                 },
                 //20
                 new Entity()
                 {
-                    Subject = subjects[19],
-                    Name = "Gandalf Falls"
+                    Name = "Gandalf Falls",
+                    World = worlds[0]
                 },
                 //21
                 new Entity()
                 {
-                    Subject = subjects[19],
-                    Name = "Destruction of The One Ring"
+                    Name = "Destruction of The One Ring",
+                    World = worlds[0]
                 }
                 };
 
@@ -568,7 +325,7 @@ namespace WorldForging.Migrations
             {
                 new Desire()
                 {
-                    Subject = subjects[18],
+                    Subject = subjects[0],
                     Description = "destroy <<<18>>> at <<<16>>>"
                 }
             };
@@ -589,17 +346,17 @@ namespace WorldForging.Migrations
             #endregion
 
             #region DesireEntities
-            var desireSubjects = new List<DesireSubject>() {
-                new DesireSubject()
+            var desireEntities = new List<DesireEntity>() {
+                new DesireEntity()
                 {
-                    Subject = subjects[19]
+                    Entity = entities[18]
                 },
-                new DesireSubject()
+                new DesireEntity()
                 {
-                    Subject = subjects[16]
+                    Entity = entities[16]
                 }
             };
-            desires[0].DesireSubjects = new List<DesireSubject> { desireSubjects[0], desireSubjects[1] };
+            desires[0].DesireEntities = new List<DesireEntity> { desireEntities[0], desireEntities[1] };
 
             #endregion
 

@@ -265,13 +265,19 @@
     <Compile Include="Migrations\201608080025143_Change xxxEntities to xxxSubjects.Designer.cs">
       <DependentUpon>201608080025143_Change xxxEntities to xxxSubjects.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608100015206_Separated entities and subjects.cs" />
+    <Compile Include="Migrations\201608100015206_Separated entities and subjects.Designer.cs">
+      <DependentUpon>201608100015206_Separated entities and subjects.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Belief.cs" />
+    <Compile Include="Models\BeliefEntity.cs" />
     <Compile Include="Models\BeliefSubject.cs" />
     <Compile Include="Models\BeliefRelationship.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\Convention.cs" />
+    <Compile Include="Models\DesireEntity.cs" />
     <Compile Include="Models\DesireSubject.cs" />
     <Compile Include="Models\EntityBelief.cs" />
     <Compile Include="Models\EntityConvention.cs" />
@@ -284,6 +290,7 @@
     <Compile Include="Models\Desire.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ReasonEntity.cs" />
     <Compile Include="Models\WorldEvent.cs" />
     <Compile Include="Models\Faction.cs" />
     <Compile Include="Models\Group.cs" />
@@ -486,6 +493,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608080025143_Change xxxEntities to xxxSubjects.resx">
       <DependentUpon>201608080025143_Change xxxEntities to xxxSubjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608100015206_Separated entities and subjects.resx">
+      <DependentUpon>201608100015206_Separated entities and subjects.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

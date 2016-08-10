@@ -18,7 +18,7 @@ namespace WorldForging.Controllers
         // GET: Entities
         public async Task<ActionResult> Index()
         {
-            var entities = db.Entities.Include(e => e.Subject);
+            var entities = db.Entities.Include(e => e);
             return View(await entities.ToListAsync());
         }
 
@@ -58,7 +58,6 @@ namespace WorldForging.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId", entity.SubjectId);
             return View(entity);
         }
 
@@ -74,7 +73,6 @@ namespace WorldForging.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId", entity.SubjectId);
             return View(entity);
         }
 
@@ -91,7 +89,6 @@ namespace WorldForging.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "SubjectId", entity.SubjectId);
             return View(entity);
         }
 

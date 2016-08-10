@@ -17,6 +17,7 @@ namespace WorldForging.Models
 
         public virtual ICollection<EntityDesire> EntityDesires { get; set; }
 
+        public virtual ICollection<DesireEntity> DesireEntities { get; set; }
         public virtual ICollection<DesireSubject> DesireSubjects { get; set; }
     }
 }
