@@ -275,7 +275,8 @@
     <Compile Include="Models\BeliefEntity.cs" />
     <Compile Include="Models\BeliefSubject.cs" />
     <Compile Include="Models\BeliefRelationship.cs" />
-    <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\Characters\Character.cs" />
+    <Compile Include="Models\Characters\CreateCharacterModel.cs" />
     <Compile Include="Models\Convention.cs" />
     <Compile Include="Models\DesireEntity.cs" />
     <Compile Include="Models\DesireSubject.cs" />

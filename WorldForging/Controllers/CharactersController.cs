@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WorldForging.Models;
+using WorldForging.Models.Characters;
 
 namespace WorldForging.Controllers
 {
@@ -59,10 +60,21 @@ namespace WorldForging.Controllers
         }
 
         // GET: Characters/Create
-        public ActionResult Create()
+        public ActionResult Create(int? worldId)
         {
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name");
-            return View();
+            if (worldId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            World world = db.Worlds.Find(worldId);
+            
+            if (world == null)
+            {
+                return HttpNotFound();
+            }
+            CreateCharacterModel ccm = new Models.Characters.CreateCharacterModel();
+            ccm.WorldId = world.WorldId;
+            return View(ccm);
         }
 
         // POST: Characters/Create
@@ -70,17 +82,23 @@ namespace WorldForging.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CharacterId,EntityId")] Character character)
+        public async Task<ActionResult> Create(CreateCharacterModel createCharacterModel)
         {
             if (ModelState.IsValid)
             {
-                db.Characters.Add(character);
+                if (createCharacterModel.VMCharacter == null)
+                {
+                    createCharacterModel.VMCharacter = new Models.Character();
+                }
+                createCharacterModel.VMEntity.WorldId = createCharacterModel.WorldId;
+                db.Entities.Add(createCharacterModel.VMEntity);
+                createCharacterModel.VMCharacter.Entity = createCharacterModel.VMEntity;
+                db.Characters.Add(createCharacterModel.VMCharacter);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", character.EntityId);
-            return View(character);
+            return View(createCharacterModel.VMCharacter);
         }
 
         // GET: Characters/Edit/5

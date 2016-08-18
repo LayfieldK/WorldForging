@@ -50,6 +50,9 @@
                 @Html.DisplayFor(modelItem => item.Entity.Name)
             </dd>
         }
+        <dd>
+            @Html.ActionLink("Add Character", "Create", new { controller = "Characters", WorldId = Model.World.WorldId })
+        </dd>
 
     </dl>
     <dl class="dl-horizontal">
