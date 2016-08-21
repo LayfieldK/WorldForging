@@ -29,6 +29,11 @@
 
     </dl>
     <dl class="dl-horizontal">
+        <dd>
+            @Html.ActionLink("Add Group", "Create", new { controller = "Groups", WorldId = Model.World.WorldId })
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
         <dt>
             Races
         </dt>
@@ -38,6 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Group.Entity.Name)
             </dd>
         }
+        <dd>
+            @Html.ActionLink("Add Race", "Create", new { controller = "Groups", WorldId = Model.World.WorldId, GroupType="race" })
+        </dd>
         
     </dl>
     <dl class="dl-horizontal">
@@ -65,6 +73,9 @@
                 @Html.DisplayFor(modelItem => item.Entity.Name)
             </dd>
         }
+        <dd>
+            @Html.ActionLink("Add Item", "Create", new { controller = "Items", WorldId = Model.World.WorldId })
+        </dd>
 
     </dl>
     <dl class="dl-horizontal">
@@ -77,6 +88,9 @@
                 @Html.DisplayFor(modelItem => item.Entity.Name)
             </dd>
         }
+        <dd>
+            @Html.ActionLink("Add Location", "Create", new { controller = "Locations", WorldId = Model.World.WorldId })
+        </dd>
 
     </dl>
     <dl class="dl-horizontal">
@@ -89,6 +103,9 @@
                 @Html.DisplayFor(modelItem => item.Entity.Name)
             </dd>
         }
+        <dd>
+            @Html.ActionLink("Add Event", "Create", new { controller = "Events", WorldId = Model.World.WorldId })
+        </dd>
 
     </dl>
 </div>

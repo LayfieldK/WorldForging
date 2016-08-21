@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WorldForging.Models;
+using WorldForging.Models.Groups;
 
 namespace WorldForging.Controllers
 {
@@ -38,10 +39,27 @@ namespace WorldForging.Controllers
         }
 
         // GET: Groups/Create
-        public ActionResult Create()
+        public ActionResult Create(int? worldId, string groupType)
         {
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name");
-            return View();
+            if (worldId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            World world = db.Worlds.Find(worldId);
+
+            if (world == null)
+            {
+                return HttpNotFound();
+            }
+            CreateGroupModel cgm = new Models.Groups.CreateGroupModel();
+            cgm.WorldId = world.WorldId;
+            cgm.GroupTypes = new List<SelectListItem> { new SelectListItem() { Text = "Faction", Value = "faction" }, new SelectListItem() { Text = "Race", Value = "race" } , new SelectListItem() { Text = "Culture", Value = "culture" } , new SelectListItem() { Text = "Religion", Value = "religion" } };
+            if (groupType != null && groupType != "")
+            {
+                var selected = cgm.GroupTypes.Where(x => x.Value == groupType).First();
+                selected.Selected = true;
+            }
+            return View(cgm);
         }
 
         // POST: Groups/Create
@@ -49,17 +67,40 @@ namespace WorldForging.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "GroupId,EntityId")] Group group)
+        public async Task<ActionResult> Create(CreateGroupModel createGroupModel)
         {
             if (ModelState.IsValid)
             {
-                db.Groups.Add(group);
+                if (createGroupModel.VMGroup == null)
+                {
+                    createGroupModel.VMGroup = new Models.Group();
+                }
+                createGroupModel.VMEntity.WorldId = createGroupModel.WorldId;
+                db.Entities.Add(createGroupModel.VMEntity);
+                createGroupModel.VMGroup.Entity = createGroupModel.VMEntity;
+                db.Groups.Add(createGroupModel.VMGroup);
+
+                switch (createGroupModel.SelectedGroupType)
+                {
+                    case "race":
+                        db.Races.Add(new Race() { Group = createGroupModel.VMGroup });
+                        break;
+                    case "faction":
+                        db.Factions.Add(new Faction() { Group = createGroupModel.VMGroup });
+                        break;
+                    case "culture":
+                        db.Cultures.Add(new Culture() { Group = createGroupModel.VMGroup });
+                        break;
+                    case "religion":
+                        db.Religions.Add(new Religion() { Group = createGroupModel.VMGroup });
+                        break;
+                }
+
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", group.EntityId);
-            return View(group);
+            return View(createGroupModel.VMGroup);
         }
 
         // GET: Groups/Edit/5
