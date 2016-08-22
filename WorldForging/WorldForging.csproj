@@ -217,6 +217,7 @@
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReasonsController.cs" />
+    <Compile Include="Controllers\WorldEventsController.cs" />
     <Compile Include="Controllers\WorldsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -291,13 +292,16 @@
     <Compile Include="Models\Desire.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Groups\CreateGroupModel.cs" />
-    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Items\CreateItemModel.cs" />
+    <Compile Include="Models\Items\Item.cs" />
+    <Compile Include="Models\Locations\CreateLocationModel.cs" />
     <Compile Include="Models\ReasonEntity.cs" />
-    <Compile Include="Models\WorldEvent.cs" />
+    <Compile Include="Models\WorldEvents\CreateWorldEventModel.cs" />
+    <Compile Include="Models\WorldEvents\WorldEvent.cs" />
     <Compile Include="Models\Faction.cs" />
     <Compile Include="Models\Groups\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Locations\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Race.cs" />
     <Compile Include="Models\Reason.cs" />

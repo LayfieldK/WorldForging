@@ -8,37 +8,37 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WorldForging.Models;
-using WorldForging.Models.Items;
+using WorldForging.Models.WorldEvents;
 
 namespace WorldForging.Controllers
 {
-    public class ItemsController : Controller
+    public class WorldEventsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Items
+        // GET: WorldEvents
         public async Task<ActionResult> Index()
         {
-            var items = db.Items.Include(i => i.Entity);
-            return View(await items.ToListAsync());
+            var events = db.Events.Include(w => w.Entity);
+            return View(await events.ToListAsync());
         }
 
-        // GET: Items/Details/5
+        // GET: WorldEvents/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item item = await db.Items.FindAsync(id);
-            if (item == null)
+            WorldEvent worldEvent = await db.Events.FindAsync(id);
+            if (worldEvent == null)
             {
                 return HttpNotFound();
             }
-            return View(item);
+            return View(worldEvent);
         }
 
-        // GET: Items/Create
+        // GET: WorldEvents/Create
         public ActionResult Create(int? worldId)
         {
             if (worldId == null)
@@ -51,90 +51,90 @@ namespace WorldForging.Controllers
             {
                 return HttpNotFound();
             }
-            CreateItemModel cim = new Models.Items.CreateItemModel();
-            cim.WorldId = world.WorldId;
-            return View(cim);
+            CreateWorldEventModel cwem = new Models.WorldEvents.CreateWorldEventModel();
+            cwem.WorldId = world.WorldId;
+            return View(cwem);
         }
 
-        // POST: Items/Create
+        // POST: WorldEvents/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(CreateItemModel createItemModel)
+        public async Task<ActionResult> Create(CreateWorldEventModel createWorldEventModel)
         {
             if (ModelState.IsValid)
             {
-                if (createItemModel.VMItem == null)
+                if (createWorldEventModel.VMWorldEvent == null)
                 {
-                    createItemModel.VMItem = new Models.Item();
+                    createWorldEventModel.VMWorldEvent = new Models.WorldEvent();
                 }
-                createItemModel.VMEntity.WorldId = createItemModel.WorldId;
-                db.Entities.Add(createItemModel.VMEntity);
-                createItemModel.VMItem.Entity = createItemModel.VMEntity;
-                db.Items.Add(createItemModel.VMItem);
+                createWorldEventModel.VMEntity.WorldId = createWorldEventModel.WorldId;
+                db.Entities.Add(createWorldEventModel.VMEntity);
+                createWorldEventModel.VMWorldEvent.Entity = createWorldEventModel.VMEntity;
+                db.Events.Add(createWorldEventModel.VMWorldEvent);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(createItemModel.VMItem);
+            return View(createWorldEventModel.VMWorldEvent);
         }
 
-        // GET: Items/Edit/5
+        // GET: WorldEvents/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item item = await db.Items.FindAsync(id);
-            if (item == null)
+            WorldEvent worldEvent = await db.Events.FindAsync(id);
+            if (worldEvent == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", item.EntityId);
-            return View(item);
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", worldEvent.EntityId);
+            return View(worldEvent);
         }
 
-        // POST: Items/Edit/5
+        // POST: WorldEvents/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ItemId,EntityId")] Item item)
+        public async Task<ActionResult> Edit([Bind(Include = "WorldEventId,EntityId")] WorldEvent worldEvent)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(item).State = EntityState.Modified;
+                db.Entry(worldEvent).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", item.EntityId);
-            return View(item);
+            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", worldEvent.EntityId);
+            return View(worldEvent);
         }
 
-        // GET: Items/Delete/5
+        // GET: WorldEvents/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item item = await db.Items.FindAsync(id);
-            if (item == null)
+            WorldEvent worldEvent = await db.Events.FindAsync(id);
+            if (worldEvent == null)
             {
                 return HttpNotFound();
             }
-            return View(item);
+            return View(worldEvent);
         }
 
-        // POST: Items/Delete/5
+        // POST: WorldEvents/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Item item = await db.Items.FindAsync(id);
-            db.Items.Remove(item);
+            WorldEvent worldEvent = await db.Events.FindAsync(id);
+            db.Events.Remove(worldEvent);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

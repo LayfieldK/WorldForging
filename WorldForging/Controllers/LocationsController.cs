@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WorldForging.Models;
+using WorldForging.Models.Locations;
 
 namespace WorldForging.Controllers
 {
@@ -38,10 +39,21 @@ namespace WorldForging.Controllers
         }
 
         // GET: Locations/Create
-        public ActionResult Create()
+        public ActionResult Create(int? worldId)
         {
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name");
-            return View();
+            if (worldId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            World world = db.Worlds.Find(worldId);
+
+            if (world == null)
+            {
+                return HttpNotFound();
+            }
+            CreateLocationModel clm = new Models.Locations.CreateLocationModel();
+            clm.WorldId = world.WorldId;
+            return View(clm);
         }
 
         // POST: Locations/Create
@@ -49,17 +61,23 @@ namespace WorldForging.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "LocationId,Name,DescriptionShort,EntityId")] Location location)
+        public async Task<ActionResult> Create(CreateLocationModel createLocationModel)
         {
             if (ModelState.IsValid)
             {
-                db.Locations.Add(location);
+                if (createLocationModel.VMLocation == null)
+                {
+                    createLocationModel.VMLocation = new Models.Location();
+                }
+                createLocationModel.VMEntity.WorldId = createLocationModel.WorldId;
+                db.Entities.Add(createLocationModel.VMEntity);
+                createLocationModel.VMLocation.Entity = createLocationModel.VMEntity;
+                db.Locations.Add(createLocationModel.VMLocation);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EntityId = new SelectList(db.Entities, "EntityId", "Name", location.EntityId);
-            return View(location);
+            return View(createLocationModel.VMLocation);
         }
 
         // GET: Locations/Edit/5
