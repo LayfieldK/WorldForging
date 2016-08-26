@@ -16,13 +16,13 @@ namespace WorldForging.Models
         public int? WorldId { get; set; }
         public World World { get; set; }
 
-        public virtual ICollection<EntityBelief> EntityBeliefs { get; set; }
+        public  ICollection<EntityBelief> EntityBeliefs { get; set; }
 
-        public virtual ICollection<EntityDesire> EntityDesires { get; set; }
+        public ICollection<EntityDesire> EntityDesires { get; set; }
 
-        public virtual ICollection<EntityConvention> EntityConventions { get; set; }
+        public  ICollection<EntityConvention> EntityConventions { get; set; }
 
-        public virtual ICollection<EntityEntity> EntityEntities { get; set; }
+        public ICollection<EntityEntity> EntityEntities { get; set; }
         
 
     }

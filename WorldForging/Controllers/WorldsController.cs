@@ -26,7 +26,8 @@ namespace WorldForging.Controllers
         // GET: Worlds
         public async Task<ActionResult> Index()
         {
-            var worlds = db.Worlds.Include(w => w.User);
+            //var worlds = db.Worlds.Include(w => w.User);
+            var worlds = db.Worlds;
             return View(await worlds.ToListAsync());
         }
 

@@ -29,3 +29,21 @@
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <div ng-repeat="world in worlds">
+        {{world.WorldId}}
+    </div>
+</div>
+
+<script>
+
+var app = angular.module("myApp", []);
+
+app.controller('myCtrl', function ($scope, $http) {
+    $http.get("/api/WorldsAPI").then(function (response) {
+        $scope.worlds = response.data;
+    });
+});
+
+</script>

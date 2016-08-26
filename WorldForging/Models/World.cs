@@ -18,10 +18,10 @@ namespace WorldForging.Models
         [ForeignKey("UserId")]
         public ApplicationUser User { get; set; }
 
-        public virtual ICollection<Subject> Subjects { get; set; }
+        public  ICollection<Subject> Subjects { get; set; }
 
 
-        public virtual ICollection<Entity> Entities { get; set; }
+        public  ICollection<Entity> Entities { get; set; }
 
     }
 }
