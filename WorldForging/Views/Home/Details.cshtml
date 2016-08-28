@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<script>
+    var app = angular.module("myApp", ['ngRoute']).config(function ($routeProvider, $locationProvider) {
+        // configure the routing rules here
+        $routeProvider.when('/backend/:type/:id', {
+            controller: 'PagesCtrl'
+        });
+
+        // enable HTML5mode to disable hashbang urls
+        $locationProvider.html5Mode(true);
+    });
+
+    app.controller('WorldDetailsVM', function ($scope, $http, $routeParams) {
+        $http({
+            method: 'GET',
+            url: '/api/WorldsAPI',
+            data: { id: $routeParams.id }
+        }).then(function (response) {
+            $scope.WorldDetails = response.data;
+        });
+    });
+
+</script>
+
+<div ng-app="myApp" ng-controller="WorldDetailsVM">
+    <h4>World</h4>
+    <hr />
+    
+    <dl class="dl-horizontal">
+        
+        <dt>
+            World Name
+        </dt>
+
+        <dd>
+            {{WorldDetails.World.Name}}
+        </dd>
+
+        <dt>
+            Description
+        </dt>
+
+        <dd>
+            {{WorldDetails.World.Description}}
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dd>
+            Add Group
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Races
+        </dt>
+        
+            <dd ng-repeat="race in WorldDetails.Races">
+                {{race.Entity.Name}}
+            </dd>
+        
+        <dd>
+            Add Race
+        </dd>
+        
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Characters
+        </dt>
+        <dd ng-repeat="character in WorldDetails.Characters">
+            {{character.Entity.Name}}
+        </dd>
+        <dd>
+            Add Character
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Items
+        </dt>
+        <dd ng-repeat="item in WorldDetails.Items">
+            {{item.Entity.Name}}
+        </dd>
+        <dd>
+            Add Item
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Locations
+        </dt>
+        <dd ng-repeat="location in WorldDetails.Locations">
+            {{character.Entity.Name}}
+        </dd>
+        <dd>
+            Add Location
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Events
+        </dt>
+        <dd ng-repeat="event in WorldDetails.Events">
+            {{event.Entity.Name}}
+        </dd>
+        <dd>
+            Add Event
+        </dd>
+
+    </dl>
+</div>
+<p>
+    Edit |
+    Back to List
+</p>

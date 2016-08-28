@@ -1,0 +1,89 @@
+﻿<h4>World</h4>
+<hr />
+
+<dl class="dl-horizontal">
+
+    <dt>
+        World Name
+    </dt>
+
+    <dd>
+        {{WorldDetails.World.Name}}
+    </dd>
+
+    <dt>
+        Description
+    </dt>
+
+    <dd>
+        {{WorldDetails.World.Description}}
+    </dd>
+
+</dl>
+<dl class="dl-horizontal">
+    <dd>
+        Add Group
+    </dd>
+</dl>
+<dl class="dl-horizontal">
+    <dt>
+        Races
+    </dt>
+
+    <dd ng-repeat="race in WorldDetails.Races">
+        {{race.Entity.Name}}
+    </dd>
+
+    <dd>
+        Add Race
+    </dd>
+
+</dl>
+<dl class="dl-horizontal">
+    <dt>
+        Characters
+    </dt>
+    <dd ng-repeat="character in WorldDetails.Characters">
+        {{character.Entity.Name}}
+    </dd>
+    <dd>
+        Add Character
+    </dd>
+
+</dl>
+<dl class="dl-horizontal">
+    <dt>
+        Items
+    </dt>
+    <dd ng-repeat="item in WorldDetails.Items">
+        {{item.Entity.Name}}
+    </dd>
+    <dd>
+        Add Item
+    </dd>
+
+</dl>
+<dl class="dl-horizontal">
+    <dt>
+        Locations
+    </dt>
+    <dd ng-repeat="location in WorldDetails.Locations">
+        {{character.Entity.Name}}
+    </dd>
+    <dd>
+        Add Location
+    </dd>
+
+</dl>
+<dl class="dl-horizontal">
+    <dt>
+        Events
+    </dt>
+    <dd ng-repeat="event in WorldDetails.Events">
+        {{event.Entity.Name}}
+    </dd>
+    <dd>
+        Add Event
+    </dd>
+
+</dl>

@@ -1,0 +1,36 @@
+﻿<h2>Index</h2>
+
+<p>
+    <a ng-href="/Worlds/Create">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            User
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th></th>
+    </tr>
+
+    <tr ng-repeat="world in Worlds">
+        <td>
+            {{world.User.Email}}
+        </td>
+        <td>
+            {{world.Name}}
+        </td>
+        <td>
+            {{world.Description}}
+        </td>
+        <td>
+            <a ng-href="/Worlds/Details/{{world.WorldId}}">Details</a>
+        </td>
+    </tr>
+    
+
+</table>

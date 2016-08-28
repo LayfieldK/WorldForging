@@ -32,15 +32,30 @@ namespace WorldForging.Controllers
 
         // GET: api/WorldsAPI/5
         [ResponseType(typeof(World))]
-        public async Task<IHttpActionResult> GetWorld(int id)
+        public async Task<IHttpActionResult> GetWorld(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
             World world = await db.Worlds.FindAsync(id);
             if (world == null)
             {
                 return NotFound();
             }
 
-            return Ok(world);
+            var worldDetailsVM = new WorldsDetailsViewModel();
+            worldDetailsVM.World = world;
+            worldDetailsVM.Entities = db.Entities.Where(c => c.WorldId == id).ToList();
+            worldDetailsVM.Characters = db.Characters.Where(c => c.Entity.WorldId == id).ToList();
+            worldDetailsVM.Races = db.Races.Where(c => c.Group.Entity.WorldId == id).ToList();
+            worldDetailsVM.Locations = db.Locations.Where(c => c.Entity.WorldId == id).ToList();
+            worldDetailsVM.Items = db.Items.Where(c => c.Entity.WorldId == id).ToList();
+            worldDetailsVM.Groups = db.Groups.Where(c => c.Entity.WorldId == id).ToList();
+            worldDetailsVM.Events = db.Events.Where(c => c.Entity.WorldId == id).ToList();
+            worldDetailsVM.Subjects = db.Subjects.Where(c => c.WorldId == id).ToList();
+
+            return Ok(worldDetailsVM);
         }
 
         // PUT: api/WorldsAPI/5

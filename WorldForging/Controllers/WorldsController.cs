@@ -34,27 +34,8 @@ namespace WorldForging.Controllers
         // GET: Worlds/Details/5
         public async Task<ActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            World world = await db.Worlds.FindAsync(id);
-            if (world == null)
-            {
-                return HttpNotFound();
-            }
-
-            var worldDetailsVM = new WorldsDetailsViewModel();
-            worldDetailsVM.World = world;
-            worldDetailsVM.Entities = db.Entities.Where(c => c.WorldId == id).ToList();
-            worldDetailsVM.Characters= db.Characters.Where(c => c.Entity.WorldId == id).ToList();
-            worldDetailsVM.Races = db.Races.Where(c => c.Group.Entity.WorldId == id).ToList();
-            worldDetailsVM.Locations = db.Locations.Where(c => c.Entity.WorldId == id).ToList();
-            worldDetailsVM.Items = db.Items.Where(c => c.Entity.WorldId == id).ToList();
-            worldDetailsVM.Groups = db.Groups.Where(c => c.Entity.WorldId == id).ToList();
-            worldDetailsVM.Events = db.Events.Where(c => c.Entity.WorldId == id).ToList();
-            worldDetailsVM.Subjects = db.Subjects.Where(c => c.WorldId == id).ToList();
-            return View(worldDetailsVM);
+            
+            return View();
         }
 
         // GET: Worlds/Create

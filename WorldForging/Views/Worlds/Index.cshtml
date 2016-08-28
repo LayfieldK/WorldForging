@@ -4,48 +4,65 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@section scripts {
+    <script>
+    //var app = angular.module("main", ['ngRoute']).config(function ($routeProvider, $locationProvider) {
+    //    // configure the routing rules here
+    //    $routeProvider.when('/Worlds', {
+    //        controller: 'WorldsVM'
+    //    });
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.User.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            Characters
-        </th>
-        <th></th>
-    </tr>
+    //    // enable HTML5mode to disable hashbang urls
+    //    $locationProvider.html5Mode(true);
+    //}).controller('WorldsVM', function ($scope, $http, $routeParams) {
+    //    $http({
+    //        method: 'GET',
+    //        url: '/api/WorldsAPI'
+    //    }).then(function (response) {
+    //        $scope.Worlds = response.data;
+    //    });
+    //});
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Characters", "Index", new { controller = "Characters", WorldId = item.WorldId })
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.WorldId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.WorldId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.WorldId })
-        </td>
-    </tr>
+    </script>
+<script src="~/App/Worlds/App.js"></script>
+<script src="~/App/Worlds/ViewModels/WorldsVM.js"></script>
+<script src="~/App/Worlds/ViewModels/WorldDetailsVM.js"></script>
 }
+<div ng-view>
+    <h2>Index</h2>
 
-</table>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        <tr ng-repeat="world in Worlds">
+            <td>
+                {{world.User.Email}}
+            </td>
+            <td>
+                {{world.Name}}
+            </td>
+            <td>
+                {{world.Description}}
+            </td>
+            <td>
+                <a ng-href="/Worlds/Details/{{world.WorldId}}">Details</a>
+            </td>
+        </tr>
+        }
+
+    </table>
+</div>

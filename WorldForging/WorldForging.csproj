@@ -318,6 +318,43 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\App.js" />
+    <Content Include="App\Customer\App.js" />
+    <Content Include="App\Customer\ViewModels\CustomerHomeViewModel.js" />
+    <Content Include="App\Customer\ViewModels\CustomerListViewModel.js" />
+    <Content Include="App\Customer\ViewModels\CustomerViewModel.js" />
+    <Content Include="App\Customer\ViewModels\RootViewModel.js" />
+    <Content Include="App\Customer\Views\CustomerHomeView.html" />
+    <Content Include="App\Customer\Views\CustomerListView.html" />
+    <Content Include="App\Customer\Views\CustomerView.html" />
+    <Content Include="App\Order\App.js" />
+    <Content Include="App\Order\ViewModels\OrderDetailViewModel.js" />
+    <Content Include="App\Order\ViewModels\OrderHomeViewModel.js" />
+    <Content Include="App\Order\ViewModels\OrderListViewModel.js" />
+    <Content Include="App\Order\ViewModels\OrderViewModel.js" />
+    <Content Include="App\Order\ViewModels\RootViewModel.js" />
+    <Content Include="App\Order\Views\OrderDetailView.html" />
+    <Content Include="App\Order\Views\OrderHomeView.html" />
+    <Content Include="App\Order\Views\OrderListView.html" />
+    <Content Include="App\Order\Views\OrderView.html" />
+    <Content Include="App\Product\App.js" />
+    <Content Include="App\Product\ViewModels\ProductHomeViewModel.js" />
+    <Content Include="App\Product\ViewModels\ProductListViewModel.js" />
+    <Content Include="App\Product\ViewModels\ProductViewModel.js" />
+    <Content Include="App\Product\ViewModels\RootViewModel.js" />
+    <Content Include="App\Product\Views\ProductHomeView.html" />
+    <Content Include="App\Product\Views\ProductListView.html" />
+    <Content Include="App\Product\Views\ProductView.html" />
+    <Content Include="App\Validator.js" />
+    <Content Include="App\WorldC\App.js" />
+    <Content Include="App\WorldC\ViewModels\WorldDetailsViewModel.js" />
+    <Content Include="App\WorldC\ViewModels\RootViewModel.js" />
+    <Content Include="App\WorldC\Views\WorldDetails.html" />
+    <Content Include="App\Worlds\App.js" />
+    <Content Include="App\Worlds\ViewModels\WorldDetailsVM.js" />
+    <Content Include="App\Worlds\ViewModels\WorldsVM.js" />
+    <Content Include="App\Worlds\Views\WorldDetailsView.html" />
+    <Content Include="App\Worlds\Views\WorldsView.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="DBScripts\Empty Database.sql" />
@@ -1247,6 +1284,7 @@
     <Content Include="Views\Items\Edit.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

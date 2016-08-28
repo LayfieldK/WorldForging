@@ -6,110 +6,133 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>World</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.World.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.World.Name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.World.Description)
-        </dt>
+@section scripts {
+<script>
+    var app = angular.module("main", ['ngRoute']).config(function ($routeProvider, $locationProvider) {
+        // configure the routing rules here
+        $routeProvider.when('/Worlds/Details/:id', {
+            controller: 'WorldDetailsVM'
+        });
 
-        <dd>
-            @Html.DisplayFor(model => model.World.Description)
-        </dd>
+        // enable HTML5mode to disable hashbang urls
+        $locationProvider.html5Mode(true);
+    }).controller('WorldDetailsVM', function ($scope, $http, $routeParams) {
+        $http({
+            method: 'GET',
+            url: '/api/WorldsAPI',
+            params: { id: 29 }
+        }).then(function (response) {
+            $scope.WorldDetails = response.data;
+        });
+        //alert($routeParams.id);
+    });
 
-    </dl>
-    <dl class="dl-horizontal">
-        <dd>
-            @Html.ActionLink("Add Group", "Create", new { controller = "Groups", WorldId = Model.World.WorldId })
-        </dd>
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            Races
-        </dt>
-        @foreach (var item in Model.Races)
-        {
+</script>
+    <!--<script src="~/App/World/App.js"></script>
+    <script src="~/App/World/ViewModels/RootViewModel.js"></script>
+    <script src="~/App/World/ViewModels/WorldDetailsViewModel.js"></script>-->
+}
+@section jsCode {
+    
+}
+
+
+    <div id="world" ng-controller="WorldDetailsVM">
+        <h4>World</h4>
+        <hr />
+
+        <dl class="dl-horizontal">
+
+            <dt>
+                World Name
+            </dt>
+
             <dd>
-                @Html.DisplayFor(modelItem => item.Group.Entity.Name)
+                {{WorldDetails.World.Name}}
             </dd>
-        }
-        <dd>
-            @Html.ActionLink("Add Race", "Create", new { controller = "Groups", WorldId = Model.World.WorldId, GroupType="race" })
-        </dd>
-        
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            Characters
-        </dt>
-        @foreach (var item in Model.Characters)
-        {
-            <dd>
-                @Html.DisplayFor(modelItem => item.Entity.Name)
-            </dd>
-        }
-        <dd>
-            @Html.ActionLink("Add Character", "Create", new { controller = "Characters", WorldId = Model.World.WorldId })
-        </dd>
 
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            Items
-        </dt>
-        @foreach (var item in Model.Items)
-        {
-            <dd>
-                @Html.DisplayFor(modelItem => item.Entity.Name)
-            </dd>
-        }
-        <dd>
-            @Html.ActionLink("Add Item", "Create", new { controller = "Items", WorldId = Model.World.WorldId })
-        </dd>
+            <dt>
+                Description
+            </dt>
 
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            Locations
-        </dt>
-        @foreach (var item in Model.Locations)
-        {
             <dd>
-                @Html.DisplayFor(modelItem => item.Entity.Name)
+                {{WorldDetails.World.Description}}
             </dd>
-        }
-        <dd>
-            @Html.ActionLink("Add Location", "Create", new { controller = "Locations", WorldId = Model.World.WorldId })
-        </dd>
 
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            Events
-        </dt>
-        @foreach (var item in Model.Events)
-        {
+        </dl>
+        <dl class="dl-horizontal">
             <dd>
-                @Html.DisplayFor(modelItem => item.Entity.Name)
+                Add Group
             </dd>
-        }
-        <dd>
-            @Html.ActionLink("Add Event", "Create", new { controller = "WorldEvents", WorldId = Model.World.WorldId })
-        </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                Races
+            </dt>
 
-    </dl>
-</div>
+            <dd ng-repeat="race in WorldDetails.Races">
+                {{race.Entity.Name}}
+            </dd>
+
+            <dd>
+                Add Race
+            </dd>
+
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                Characters
+            </dt>
+            <dd ng-repeat="character in WorldDetails.Characters">
+                {{character.Entity.Name}}
+            </dd>
+            <dd>
+                Add Character
+            </dd>
+
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                Items
+            </dt>
+            <dd ng-repeat="item in WorldDetails.Items">
+                {{item.Entity.Name}}
+            </dd>
+            <dd>
+                Add Item
+            </dd>
+
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                Locations
+            </dt>
+            <dd ng-repeat="location in WorldDetails.Locations">
+                {{character.Entity.Name}}
+            </dd>
+            <dd>
+                Add Location
+            </dd>
+
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                Events
+            </dt>
+            <dd ng-repeat="event in WorldDetails.Events">
+                {{event.Entity.Name}}
+            </dd>
+            <dd>
+                Add Event
+            </dd>
+
+        </dl>
+    </div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.World.WorldId }) |
-    @Html.ActionLink("Back to List", "Index")
+    Edit |
+    Back to List
 </p>
+
