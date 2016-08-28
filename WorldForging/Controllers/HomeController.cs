@@ -13,7 +13,7 @@ namespace WorldForging.Controllers
             return View();
         }
 
-        public ActionResult Details()
+        public ActionResult Worlds()
         {
             return View();
         }
@@ -28,6 +28,27 @@ namespace WorldForging.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Customer()
+        {
+            ViewBag.Message = "Customer Section";
+
+            return View();
+        }
+
+        public ActionResult Product()
+        {
+            ViewBag.Message = "Product Section";
+
+            return View();
+        }
+
+        public ActionResult Order()
+        {
+            ViewBag.Message = "Orders Section";
 
             return View();
         }

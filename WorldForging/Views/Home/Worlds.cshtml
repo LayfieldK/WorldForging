@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Worlds";
+}
+@section scripts {
+    <script src="~/App/Worlds/App.js"></script>
+    <script src="~/App/Worlds/ViewModels/RootViewModel.js"></script>
+    <script src="~/App/Worlds/ViewModels/WorldDetailsVM.js"></script>
+    <script src="~/App/Worlds/ViewModels/WorldsVM.js"></script>
+}
+@section jsCode {
+    angular.bootstrap(document.getElementById("worlds"), ['worlds']);
+}
+
+<div ng-non-bindable>
+    <div id="worlds" data-ng-controller="rootViewModel">
+        <h2>{{ pageHeading }}</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ng-click="worldsList()">Worlds List</button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary" ng-click="showWorld()">World</button>&nbsp;
+                <input type="text" ng-model="worldsService.worldId" />
+            </div>
+        </div>
+        <hr />
+        <div ng-view></div>
+        <hr />
+        <div>
+            <a href="#" ng-click="viewModelHelper.refreshPage('customer')">Customers</a><!-- note: NOT navigateTo -->
+            &nbsp;|&nbsp;
+            <a href="#" ng-click="viewModelHelper.refreshPage('product')">Products</a>
+            &nbsp;|&nbsp;
+            <a href="#" ng-click="viewModelHelper.refreshPage('order')">Orders</a>
+            &nbsp;|&nbsp;
+        </div>
+    </div>
+</div>

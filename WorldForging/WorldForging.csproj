@@ -222,7 +222,7 @@
     <Compile Include="Controllers\ReasonsController.cs" />
     <Compile Include="Controllers\WorldEventsController.cs" />
     <Compile Include="Controllers\WorldsAPIController.cs" />
-    <Compile Include="Controllers\WorldsController.cs" />
+    <Compile Include="Controllers\TODELETEWorldsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -351,6 +351,7 @@
     <Content Include="App\WorldC\ViewModels\RootViewModel.js" />
     <Content Include="App\WorldC\Views\WorldDetails.html" />
     <Content Include="App\Worlds\App.js" />
+    <Content Include="App\Worlds\ViewModels\RootViewModel.js" />
     <Content Include="App\Worlds\ViewModels\WorldDetailsVM.js" />
     <Content Include="App\Worlds\ViewModels\WorldsVM.js" />
     <Content Include="App\Worlds\Views\WorldDetailsView.html" />
@@ -1284,7 +1285,10 @@
     <Content Include="Views\Items\Edit.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Worlds.cshtml" />
+    <Content Include="Views\Home\Customer.cshtml" />
+    <Content Include="Views\Home\Order.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

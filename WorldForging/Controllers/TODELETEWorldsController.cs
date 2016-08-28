@@ -13,11 +13,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WorldForging.Controllers
 {
-    public class WorldsController : Controller
+    public class TODELETEWorldsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public WorldsController()
+        public TODELETEWorldsController()
         {
             this.db = new ApplicationDbContext();
             this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.db));
