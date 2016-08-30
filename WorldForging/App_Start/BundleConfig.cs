@@ -29,7 +29,11 @@ namespace WorldForging
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/angular.js",
-                        "~/Scripts/angular-route.js"));
+                        "~/Scripts/angular-route.js",
+                        "~/Scripts/angular-ui-router.js",
+                        "~/Scripts/angular-animate.js",
+                        "~/Scripts/angular-touch.js",
+                        "~/Scripts/angular-ui/ui-bootstrap-tpls.js"));
         }
     }
 }

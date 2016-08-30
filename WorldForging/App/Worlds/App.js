@@ -18,7 +18,7 @@
 //});
 
 
-var worldsModule = angular.module('worlds', ['common'])
+var worldsModule = angular.module('worlds', ['common', 'ui.bootstrap'])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/worlds', { templateUrl: '/App/Worlds/Views/WorldsView.html', controller: 'WorldsVM' });
         $routeProvider.when('/worlds/details/:worldId', { templateUrl: '/App/Worlds/Views/WorldDetailsView.html', controller: 'WorldDetailsVM' });
@@ -42,3 +42,4 @@ worldsModule.factory('worldsService', function ($rootScope, $http, $q, $location
     };
     myApp.worldsService = worldsService;
 }(window.MyApp));
+
