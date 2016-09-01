@@ -1,4 +1,4 @@
-﻿worldsModule.controller('WorldsVM', function ($scope, worldsService, $http, $q, $routeParams, $window, $location, $uibModal, viewModelHelper) {
+﻿worldsModule.controller('WorldsVM', function ($scope, worldsService, $http, $q, $routeParams, $window, $location, $uibModal, viewModelHelper, $state) {
     $http({
         method: 'GET',
         url: '/api/WorldsAPI'
@@ -8,10 +8,11 @@
 
     $scope.showWorld = function (world) {
         $scope.flags.shownFromList = true;
-        viewModelHelper.navigateTo('worlds/details/' + world.WorldId);
+        //viewModelHelper.navigateTo('worlds/details/' + world.WorldId);
+        $state.go('wdetails', { worldId: world.WorldId });
     }
 
-    $scope.showModal = function () {
+    $scope.showModal = function (world) {
         
         
                 $uibModal.open({
@@ -21,9 +22,10 @@
                     templateUrl: '/App/Worlds/Views/WorldDetailsView.html',
                     controller: 'WorldDetailsVM',
                     controllerAs: '$ctrl',
+                    //component: 'worldDetails',
                     size: 'lg',
                     resolve: {
-                        worldId: 29
+                        worldId: world.WorldId
                     }
 
                 });
