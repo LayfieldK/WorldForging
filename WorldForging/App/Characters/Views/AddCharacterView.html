@@ -1,0 +1,31 @@
+﻿<h2>Create Character</h2>
+
+<form ng-submit="CreateCharacter()">
+    <div class="form-horizontal">
+
+        <h4>Character</h4>
+        <hr />
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Name</label>
+            <div class="col-md-10">
+                <input type="text" ng-model="name" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Description
+            </label>
+            <div class="col-md-10">
+                <input type="text" ng-model="description" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>

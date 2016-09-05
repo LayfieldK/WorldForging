@@ -208,6 +208,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BeliefsController.cs" />
+    <Compile Include="Controllers\CharactersAPIController.cs" />
     <Compile Include="Controllers\CharactersController.cs" />
     <Compile Include="Controllers\ConventionsController.cs" />
     <Compile Include="Controllers\DesiresController.cs" />
@@ -319,6 +320,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\App.js" />
+    <Content Include="App\Characters\ViewModels\AddCharacterVM.js" />
+    <Content Include="App\Characters\Views\AddCharacterView.html" />
     <Content Include="App\Customer\App.js" />
     <Content Include="App\Customer\ViewModels\CustomerHomeViewModel.js" />
     <Content Include="App\Customer\ViewModels\CustomerListViewModel.js" />
