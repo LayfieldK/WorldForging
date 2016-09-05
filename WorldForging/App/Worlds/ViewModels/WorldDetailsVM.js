@@ -1,19 +1,24 @@
 ﻿//worldsModule.controller('WorldDetailsVM', function ($scope, worldsService, $http, $q, $routeParams, $window, $location, viewModelHelper, worldId, $stateParams) {
 worldsModule.controller('WorldDetailsVM', function ($scope, worldsService, $http, $q, $routeParams, $window, $location, viewModelHelper, $uibModal, /*worldId,*/ $stateParams) {
 
-    $http({
-        method: 'GET',
-        url: '/api/WorldsAPI',
-        //params: { worldId: worldId }
-        params: { worldId: $stateParams.worldId }
-    }).then(function (response) {
-        $scope.WorldDetails = response.data;
-    });
+    
+
+    $scope.LoadWorldDetails = function (worldId) {
+        $http({
+            method: 'GET',
+            url: '/api/WorldsAPI',
+            //params: { worldId: worldId }
+            params: { worldId: worldId }
+        }).then(function (response) {
+            $scope.WorldDetails = response.data;
+        });
+    }
+    
 
     $scope.showAddCharacterForm = function () {
 
 
-        $uibModal.open({
+        var modalInstance = $uibModal.open({
             animation: true,
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
@@ -29,9 +34,13 @@ worldsModule.controller('WorldDetailsVM', function ($scope, worldsService, $http
 
         });
 
+        modalInstance.result.then(function () {
+            $scope.LoadWorldDetails($stateParams.worldId);
+        });
+
     }
 
-    
+    $scope.LoadWorldDetails($stateParams.worldId);
 
 });
 

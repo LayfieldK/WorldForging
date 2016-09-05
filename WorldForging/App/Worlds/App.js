@@ -30,8 +30,11 @@
 //    });
 
 var worldsModule = angular.module('worlds', ['common', 'ui.bootstrap', 'ui.router'])
-worldsModule.config(function ($stateProvider, $locationProvider) {
+worldsModule.config(function ($stateProvider,$urlRouterProvider, $locationProvider) {
     // An array of state definitions
+    //alert('states');
+    $urlRouterProvider.otherwise('/worlds');
+
     var states = [
       {
           name: 'worlds',

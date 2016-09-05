@@ -56,7 +56,7 @@ namespace WorldForging
                 url: "{controller}/{action}/{id}",
                 defaults: new
                 {
-                    controller = "Home",
+                    controller = "Worlds",
                     action = "Index",
                     id = UrlParameter.Optional
                 }

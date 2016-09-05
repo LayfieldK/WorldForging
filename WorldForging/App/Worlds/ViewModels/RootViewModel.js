@@ -14,7 +14,7 @@
     }
 
     $scope.worldsList = function () {
-        viewModelHelper.navigateTo('worlds/list');
+        viewModelHelper.navigateTo('worlds/');
     }
 
     $scope.showWorld = function () {
