@@ -10,48 +10,48 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WorldForging.Models;
-using WorldForging.Models.Items;
+using WorldForging.Models.Groups;
 
 namespace WorldForging.Controllers
 {
-    public class ItemsAPIController : ApiController
+    public class GroupsAPIController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/ItemsAPI
-        public IQueryable<Item> GetItems()
+        // GET: api/GroupsAPI
+        public IQueryable<Group> GetGroups()
         {
-            return db.Items;
+            return db.Groups;
         }
 
-        // GET: api/ItemsAPI/5
-        [ResponseType(typeof(Item))]
-        public async Task<IHttpActionResult> GetItem(int id)
+        // GET: api/GroupsAPI/5
+        [ResponseType(typeof(Group))]
+        public async Task<IHttpActionResult> GetGroup(int id)
         {
-            Item item = await db.Items.FindAsync(id);
-            if (item == null)
+            Group group = await db.Groups.FindAsync(id);
+            if (group == null)
             {
                 return NotFound();
             }
 
-            return Ok(item);
+            return Ok(group);
         }
 
-        // PUT: api/ItemsAPI/5
+        // PUT: api/GroupsAPI/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutItem(int id, Item item)
+        public async Task<IHttpActionResult> PutGroup(int id, Group group)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != item.ItemId)
+            if (id != group.GroupId)
             {
                 return BadRequest();
             }
 
-            db.Entry(item).State = EntityState.Modified;
+            db.Entry(group).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace WorldForging.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ItemExists(id))
+                if (!GroupExists(id))
                 {
                     return NotFound();
                 }
@@ -72,39 +72,39 @@ namespace WorldForging.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ItemsAPI
-        [ResponseType(typeof(CreateItemModel))]
-        public async Task<IHttpActionResult> PostItem(CreateItemModel createItemModel)
+        // POST: api/GroupsAPI
+        [ResponseType(typeof(CreateGroupModel))]
+        public async Task<IHttpActionResult> PostGroup(CreateGroupModel createGroupModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            createItemModel.VMEntity.WorldId = createItemModel.WorldId;
-            db.Entities.Add(createItemModel.VMEntity);
-            createItemModel.VMItem.Entity = createItemModel.VMEntity;
-            db.Items.Add(createItemModel.VMItem);
+            createGroupModel.VMEntity.WorldId = createGroupModel.WorldId;
+            db.Entities.Add(createGroupModel.VMEntity);
+            createGroupModel.VMGroup.Entity = createGroupModel.VMEntity;
+            db.Groups.Add(createGroupModel.VMGroup);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = createItemModel.VMItem.ItemId }, createItemModel.VMItem);
+            return CreatedAtRoute("DefaultApi", new { id = createGroupModel.VMGroup.GroupId }, createGroupModel.VMGroup);
 
         }
 
-        // DELETE: api/ItemsAPI/5
-        [ResponseType(typeof(Item))]
-        public async Task<IHttpActionResult> DeleteItem(int id)
+        // DELETE: api/GroupsAPI/5
+        [ResponseType(typeof(Group))]
+        public async Task<IHttpActionResult> DeleteGroup(int id)
         {
-            Item item = await db.Items.FindAsync(id);
-            if (item == null)
+            Group group = await db.Groups.FindAsync(id);
+            if (group == null)
             {
                 return NotFound();
             }
 
-            db.Items.Remove(item);
+            db.Groups.Remove(group);
             await db.SaveChangesAsync();
 
-            return Ok(item);
+            return Ok(group);
         }
 
         protected override void Dispose(bool disposing)
@@ -116,9 +116,9 @@ namespace WorldForging.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ItemExists(int id)
+        private bool GroupExists(int id)
         {
-            return db.Items.Count(e => e.ItemId == id) > 0;
+            return db.Groups.Count(e => e.GroupId == id) > 0;
         }
     }
 }

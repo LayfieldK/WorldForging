@@ -214,13 +214,16 @@
     <Compile Include="Controllers\DesiresController.cs" />
     <Compile Include="Controllers\EntitiesAPIController.cs" />
     <Compile Include="Controllers\EntitiesController.cs" />
+    <Compile Include="Controllers\GroupsAPIController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsAPIController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
+    <Compile Include="Controllers\LocationsAPIController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReasonsController.cs" />
+    <Compile Include="Controllers\WorldEventsAPIController.cs" />
     <Compile Include="Controllers\WorldEventsController.cs" />
     <Compile Include="Controllers\WorldsAPIController.cs" />
     <Compile Include="Controllers\TODELETEWorldsController.cs" />
@@ -320,6 +323,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\App.js" />
+    <Content Include="App\Locations\ViewModels\AddLocationVM.js" />
+    <Content Include="App\Locations\Views\AddLocaationView.html" />
+    <Content Include="App\Items\ViewModels\AddItemVM.js" />
+    <Content Include="App\Items\Views\AddItemView.html" />
+    <Content Include="App\Groups\ViewModels\AddGroupVM.js" />
+    <Content Include="App\Groups\Views\AddGroupView.html" />
+    <Content Include="App\WorldEvents\ViewModels\AddWorldEventVM.js" />
+    <Content Include="App\WorldEvents\Views\AddWorldEventView.html" />
     <Content Include="App\Characters\ViewModels\AddCharacterVM.js" />
     <Content Include="App\Characters\Views\AddCharacterView.html" />
     <Content Include="App\Customer\App.js" />

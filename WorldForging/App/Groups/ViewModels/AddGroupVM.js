@@ -1,9 +1,9 @@
-﻿worldsModule.controller('AddCharacterVM', function ($scope, worldsService, $http, $q, $routeParams, $window, $location, viewModelHelper, worldId, $stateParams, $uibModalInstance) {
+﻿worldsModule.controller('AddGroupVM', function ($scope, worldsService, $http, $q, $routeParams, $window, $location, viewModelHelper, worldId, $stateParams, $uibModalInstance) {
     $scope.name = "";
     $scope.description = "";
     $scope.WorldId = worldId;
 
-    $scope.AddCharacter = function () {
+    $scope.AddGroup = function () {
         var model = {
             WorldId: $scope.WorldId,
             VMEntity: {
@@ -12,13 +12,13 @@
                 Description: $scope.description
 
             },
-            VMCharacter: {
+            VMGroup: {
 
             }
 
         }
-        $http.post('/api/CharactersAPI', model).then(function (response) {
-            $scope.CreatedCharacter = response.data;
+        $http.post('/api/GroupsAPI', model).then(function (response) {
+            $scope.CreatedGroup = response.data;
             $uibModalInstance.close();
         });
     }

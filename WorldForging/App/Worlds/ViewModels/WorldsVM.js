@@ -1,5 +1,5 @@
 ﻿worldsModule.controller('WorldsVM', function ($scope, worldsService, $http, $q, $routeParams, $window, $location, $uibModal, viewModelHelper, $state) {
-    alert('worldsvm');
+
     $http({
         method: 'GET',
         url: '/api/WorldsAPI'

@@ -1,9 +1,9 @@
-﻿worldsModule.controller('AddCharacterVM', function ($scope, worldsService, $http, $q, $routeParams, $window, $location, viewModelHelper, worldId, $stateParams, $uibModalInstance) {
+﻿worldsModule.controller('AddWorldEventVM', function ($scope, worldsService, $http, $q, $routeParams, $window, $location, viewModelHelper, worldId, $stateParams, $uibModalInstance) {
     $scope.name = "";
     $scope.description = "";
     $scope.WorldId = worldId;
 
-    $scope.AddCharacter = function () {
+    $scope.AddWorldEvent = function () {
         var model = {
             WorldId: $scope.WorldId,
             VMEntity: {
@@ -12,13 +12,13 @@
                 Description: $scope.description
 
             },
-            VMCharacter: {
+            VMWorldEvent: {
 
             }
 
         }
-        $http.post('/api/CharactersAPI', model).then(function (response) {
-            $scope.CreatedCharacter = response.data;
+        $http.post('/api/WorldEventsAPI', model).then(function (response) {
+            $scope.CreatedWorldEvent = response.data;
             $uibModalInstance.close();
         });
     }
