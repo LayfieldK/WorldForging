@@ -324,7 +324,7 @@
   <ItemGroup>
     <Content Include="App\App.js" />
     <Content Include="App\Locations\ViewModels\AddLocationVM.js" />
-    <Content Include="App\Locations\Views\AddLocaationView.html" />
+    <Content Include="App\Locations\Views\AddLocationView.html" />
     <Content Include="App\Items\ViewModels\AddItemVM.js" />
     <Content Include="App\Items\Views\AddItemView.html" />
     <Content Include="App\Groups\ViewModels\AddGroupVM.js" />

@@ -17,7 +17,7 @@
             }
 
         }
-        $http.post('/api/LocationssAPI', model).then(function (response) {
+        $http.post('/api/LocationsAPI', model).then(function (response) {
             $scope.CreatedLocation = response.data;
             $uibModalInstance.close();
         });

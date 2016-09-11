@@ -100,7 +100,7 @@ worldsModule.controller('WorldDetailsVM', function ($scope, worldsService, $http
             animation: true,
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
-            templateUrl: '/App/Item/Views/AddItemView.html',
+            templateUrl: '/App/Items/Views/AddItemView.html',
             controller: 'AddItemVM',
             controllerAs: '$ctrl',
             size: 'lg',
