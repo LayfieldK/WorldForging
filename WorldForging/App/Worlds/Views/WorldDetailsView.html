@@ -21,6 +21,13 @@
 
 </dl>
 <dl class="dl-horizontal">
+    <dt>
+        Groups
+    </dt>
+
+    <dd ng-repeat="group in WorldDetails.Groups">
+        {{group.Entity.Name}}
+    </dd>
     <dd>
         <a href="#" ng-click="showAddGroupForm()">Add Group</a>
     </dd>
@@ -31,7 +38,7 @@
     </dt>
 
     <dd ng-repeat="race in WorldDetails.Races">
-        {{race.Group.Entity.Name}}
+        <a href="#" ng-click="showEntityRelationships(race.Group.Entity.EntityId)">{{race.Group.Entity.Name}}</a>
     </dd>
 
     <dd>

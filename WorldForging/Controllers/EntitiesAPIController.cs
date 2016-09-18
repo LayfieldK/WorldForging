@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WorldForging.Models;
+using WorldForging.Models.Entities;
 
 namespace WorldForging.Controllers
 {
@@ -24,16 +25,19 @@ namespace WorldForging.Controllers
         }
 
         // GET: api/EntitiesAPI/5
-        [ResponseType(typeof(Entity))]
-        public async Task<IHttpActionResult> GetEntity(int id)
+        [ResponseType(typeof(EntityRelationshipViewModel))]
+        public async Task<IHttpActionResult> GetEntity(int? entityId)
         {
-            Entity entity = await db.Entities.FindAsync(id);
+            Entity entity = await db.Entities.Include(r => r.EntityEntities).SingleOrDefaultAsync(e => e.EntityId == entityId);
             if (entity == null)
             {
                 return NotFound();
             }
+            EntityRelationshipViewModel erVM = new Models.Entities.EntityRelationshipViewModel();
+            erVM.Entity = entity;
+            erVM.EntityRelationships = entity.EntityEntities.ToList();
 
-            return Ok(entity);
+            return Ok(erVM);
         }
 
         // PUT: api/EntitiesAPI/5

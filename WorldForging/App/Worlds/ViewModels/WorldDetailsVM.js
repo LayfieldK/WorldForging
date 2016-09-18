@@ -15,6 +15,28 @@ worldsModule.controller('WorldDetailsVM', function ($scope, worldsService, $http
     }
     
 
+    
+
+    $scope.showEntityRelationships = function (entityId) {
+        var modalInstance = $uibModal.open({
+            animation: true,
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: '/App/Entities/Views/EntityRelationshipsView.html',
+            controller: 'EntityRelationshipsVM',
+            controllerAs: '$ctrl',
+            size: 'lg',
+            resolve: {
+                entityId: function () {
+                    return entityId;
+                }
+            }
+        });
+        modalInstance.result.then(function () {
+            $scope.LoadEntityRelationships(entityId);
+        });
+    }
+
     $scope.showAddCharacterForm = function () {
         var modalInstance = $uibModal.open({
             animation: true,

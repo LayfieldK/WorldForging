@@ -1,0 +1,38 @@
+﻿<h2>Entity Relationships</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Entity1
+        </th>
+        <th>
+            Relationship
+        </th>
+        <th>
+            Entity2
+        </th>
+        
+    </tr>
+
+    <tr ng-repeat="relationship in EntityRelationshipsData.EntityRelationships">
+        <td>
+            <input type="text" ng-value="relationship.Entity2.Name">
+        </td>
+        <td>
+            <select></select>
+        </td>
+        <td>
+            <input type="text" ng-value="relationship.Entity2.Name">
+        </td>
+        
+    </tr>
+
+    
+
+
+</table>
+
+<p>
+    <button ng-click="addNewRelationshipRow()">New Relationship</button>
+</p>
