@@ -15,7 +15,7 @@ namespace WorldForging.Migrations
             ContextKey = "WorldForging.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(WorldForging.Models.ApplicationDbContext context)
+    protected override void Seed(WorldForging.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -381,11 +381,34 @@ namespace WorldForging.Migrations
             #endregion
 
 
-            #region EntityEntityRelationship
-            var entityRMemberOfGroup = new EntityEntityRelationship();
-            var entityRIsOfRace = new EntityEntityRelationship();
-            var entityRPresentForEvent = new EntityEntityRelationship();
-            var entityROccurredAtLocation = new EntityEntityRelationship();
+            #region EntityRelationship
+            var entityRMemberOfGroup = new EntityRelationship()
+            {
+                Description = "is a member of",
+                World = worlds[0]
+            };
+            context.EntityRelationships.Add(entityRMemberOfGroup);
+
+            var entityRIsOfRace = new EntityRelationship()
+            {
+                Description = "is of the race",
+                World = worlds[0]
+            };
+            context.EntityRelationships.Add(entityRIsOfRace);
+
+            var entityRPresentForEvent = new EntityRelationship()
+            {
+                Description = "was present for",
+                World = worlds[0]
+            };
+            context.EntityRelationships.Add(entityRPresentForEvent);
+
+            var entityROccurredAtLocation = new EntityRelationship()
+            {
+                Description = "occurred at",
+                World = worlds[0]
+            };
+            context.EntityRelationships.Add(entityROccurredAtLocation);
             #endregion
 
             #region EntityEntities
@@ -394,157 +417,159 @@ namespace WorldForging.Migrations
                 {
                     Entity1 = entities[0],
                     Entity2 = entities[10],
-                    EntityEntityRelationship = entityRMemberOfGroup
+                    EntityRelationship = entityRMemberOfGroup
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[1],
                     Entity2 = entities[10],
-                    EntityEntityRelationship = entityRMemberOfGroup
+                    EntityRelationship = entityRMemberOfGroup
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[2],
                     Entity2 = entities[10],
-                    EntityEntityRelationship = entityRMemberOfGroup
+                    EntityRelationship = entityRMemberOfGroup
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[3],
                     Entity2 = entities[10],
-                    EntityEntityRelationship = entityRMemberOfGroup
+                    EntityRelationship = entityRMemberOfGroup
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[4],
                     Entity2 = entities[10],
-                    EntityEntityRelationship = entityRMemberOfGroup
+                    EntityRelationship = entityRMemberOfGroup
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[5],
                     Entity2 = entities[10],
-                    EntityEntityRelationship = entityRMemberOfGroup
+                    EntityRelationship = entityRMemberOfGroup
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[6],
                     Entity2 = entities[10],
-                    EntityEntityRelationship = entityRMemberOfGroup
+                    EntityRelationship = entityRMemberOfGroup
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[7],
                     Entity2 = entities[10],
-                    EntityEntityRelationship = entityRMemberOfGroup
+                    EntityRelationship = entityRMemberOfGroup
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[8],
                     Entity2 = entities[10],
-                    EntityEntityRelationship = entityRMemberOfGroup
+                    EntityRelationship = entityRMemberOfGroup
                 },
                 //hobbits
                 new EntityEntity()
                 {
                     Entity1 = entities[0],
                     Entity2 = entities[11],
-                    EntityEntityRelationship = entityRIsOfRace
+                    EntityRelationship = entityRIsOfRace
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[1],
                     Entity2 = entities[11],
-                    EntityEntityRelationship = entityRIsOfRace
+                    EntityRelationship = entityRIsOfRace
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[3],
                     Entity2 = entities[11],
-                    EntityEntityRelationship = entityRIsOfRace
+                    EntityRelationship = entityRIsOfRace
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[4],
                     Entity2 = entities[11],
-                    EntityEntityRelationship = entityRIsOfRace
+                    EntityRelationship = entityRIsOfRace
                 },
                 //men
                 new EntityEntity()
                 {
                     Entity1 = entities[5],
                     Entity2 = entities[12],
-                    EntityEntityRelationship = entityRIsOfRace
+                    EntityRelationship = entityRIsOfRace
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[8],
                     Entity2 = entities[12],
-                    EntityEntityRelationship = entityRIsOfRace
+                    EntityRelationship = entityRIsOfRace
                 },
                 //elves
                 new EntityEntity()
                 {
                     Entity1 = entities[6],
                     Entity2 = entities[13],
-                    EntityEntityRelationship = entityRIsOfRace
+                    EntityRelationship = entityRIsOfRace
                 },
                 //dwarves
                 new EntityEntity()
                 {
                     Entity1 = entities[7],
                     Entity2 = entities[14],
-                    EntityEntityRelationship = entityRIsOfRace
+                    EntityRelationship = entityRIsOfRace
                 },
                 //Events occur in locations
                 new EntityEntity()
                 {
                     Entity1 = entities[19],
                     Entity2 = entities[17],
-                    EntityEntityRelationship = entityROccurredAtLocation
+                    EntityRelationship = entityROccurredAtLocation
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[21],
                     Entity2 = entities[16],
-                    EntityEntityRelationship = entityROccurredAtLocation
+                    EntityRelationship = entityROccurredAtLocation
                 },
                 //Entities involved in Events
                 new EntityEntity()
                 {
                     Entity1 = entities[10],
                     Entity2 = entities[19],
-                    EntityEntityRelationship = entityRPresentForEvent
+                    EntityRelationship = entityRPresentForEvent
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[0],
                     Entity2 = entities[19],
-                    EntityEntityRelationship = entityRPresentForEvent
+                    EntityRelationship = entityRPresentForEvent
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[4],
                     Entity2 = entities[19],
-                    EntityEntityRelationship = entityRPresentForEvent
+                    EntityRelationship = entityRPresentForEvent
                 },
                 new EntityEntity()
                 {
                     Entity1 = entities[18],
                     Entity2 = entities[19],
-                    EntityEntityRelationship = entityRPresentForEvent
+                    EntityRelationship = entityRPresentForEvent
                 }
             };
 
-            entities[0].EntityEntities = new List<EntityEntity> { entityEntities[0], entityEntities[9] };
-            entities[1].EntityEntities = new List<EntityEntity> { entityEntities[1], entityEntities[10] };
-            entities[2].EntityEntities = new List<EntityEntity> { entityEntities[2] };
-            entities[3].EntityEntities = new List<EntityEntity> { entityEntities[3], entityEntities[11] };
-            entities[4].EntityEntities = new List<EntityEntity> { entityEntities[4], entityEntities[12] };
-            entities[5].EntityEntities = new List<EntityEntity> { entityEntities[5], entityEntities[13] };
-            entities[6].EntityEntities = new List<EntityEntity> { entityEntities[6], entityEntities[15] };
-            entities[7].EntityEntities = new List<EntityEntity> { entityEntities[7], entityEntities[16] };
-            entities[8].EntityEntities = new List<EntityEntity> { entityEntities[8], entityEntities[14] };
+            //entities[0].EntityEntities = new List<EntityEntity> { entityEntities[0], entityEntities[9] };
+            //entities[1].EntityEntities = new List<EntityEntity> { entityEntities[1], entityEntities[10] };
+            //entities[2].EntityEntities = new List<EntityEntity> { entityEntities[2] };
+            //entities[3].EntityEntities = new List<EntityEntity> { entityEntities[3], entityEntities[11] };
+            //entities[4].EntityEntities = new List<EntityEntity> { entityEntities[4], entityEntities[12] };
+            //entities[5].EntityEntities = new List<EntityEntity> { entityEntities[5], entityEntities[13] };
+            //entities[6].EntityEntities = new List<EntityEntity> { entityEntities[6], entityEntities[15] };
+            //entities[7].EntityEntities = new List<EntityEntity> { entityEntities[7], entityEntities[16] };
+            //entities[8].EntityEntities = new List<EntityEntity> { entityEntities[8], entityEntities[14] };
+
+            entityEntities.ForEach(c => context.EntityEntities.AddOrUpdate(c));
             #endregion
 
         }

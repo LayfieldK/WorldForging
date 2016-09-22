@@ -33,6 +33,8 @@ namespace WorldForging.Models
             return new ApplicationDbContext();
         }
 
+
+
         public System.Data.Entity.DbSet<WorldForging.Models.World> Worlds { get; set; }
 
         public System.Data.Entity.DbSet<WorldForging.Models.Faction> Factions { get; set; }
@@ -64,5 +66,9 @@ namespace WorldForging.Models
         public System.Data.Entity.DbSet<WorldForging.Models.Convention> Conventions { get; set; }
 
         public System.Data.Entity.DbSet<WorldForging.Models.Item> Items { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.EntityRelationship> EntityRelationships { get; set; }
+
+        public System.Data.Entity.DbSet<WorldForging.Models.EntityEntity> EntityEntities { get; set; }
     }
 }

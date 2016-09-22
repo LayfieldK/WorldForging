@@ -30,7 +30,8 @@ worldsModule.controller('WorldDetailsVM', function ($scope, worldsService, $http
                 entityId: function () {
                     return entityId;
                 }
-            }
+            },
+            windowClass: 'entity-relationships-modal'
         });
         modalInstance.result.then(function () {
             $scope.LoadEntityRelationships(entityId);

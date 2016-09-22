@@ -22,8 +22,10 @@ namespace WorldForging.Models
 
         public  ICollection<EntityConvention> EntityConventions { get; set; }
 
-        public ICollection<EntityEntity> EntityEntities { get; set; }
-        
+        public ICollection<EntityEntity> Entity1Relationships { get; set; }
+
+        public ICollection<EntityEntity> Entity2Relationships { get; set; }
+
 
     }
 }

@@ -5,11 +5,11 @@ using System.Web;
 
 namespace WorldForging.Models
 {
-    public class EntityEntityRelationshipReason
+    public class EntityRelationshipReason
     {
-        public int EntityEntityRelationshipReasonId { get; set; }
+        public int EntityRelationshipReasonId { get; set; }
 
-        public int EntityEntityRelationshipId { get; set; }
-        public EntityEntityRelationship EntityEntityRelationship { get; set; }
+        public int EntityRelationshipId { get; set; }
+        public EntityRelationship EntityRelationship { get; set; }
     }
 }

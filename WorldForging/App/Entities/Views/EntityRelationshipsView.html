@@ -17,13 +17,14 @@
 
     <tr ng-repeat="relationship in EntityRelationshipsData.EntityRelationships">
         <td>
-            <input type="text" ng-value="relationship.Entity2.Name">
+            <select ng-model="relationship.Entity1Id" ng-options="e.EntityId as e.Name for e in EntityRelationshipsData.Entities">
+            </select>
         </td>
         <td>
-            <select></select>
+            <select ng-model="relationship.EntityRelationshipId" ng-options="r.EntityRelationshipId as r.Description for r in EntityRelationshipsData.Relationships"></select>
         </td>
         <td>
-            <input type="text" ng-value="relationship.Entity2.Name">
+            <select ng-model="relationship.Entity2Id" ng-options="e.EntityId as e.Name for e in EntityRelationshipsData.Entities"></select>
         </td>
         
     </tr>

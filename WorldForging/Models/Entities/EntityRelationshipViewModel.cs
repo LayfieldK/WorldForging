@@ -9,6 +9,8 @@ namespace WorldForging.Models.Entities
     {
         public Entity Entity;
         public List<EntityEntity> EntityRelationships;
+        public List<Entity> Entities;
+        public List<EntityRelationship> Relationships;
 
     }
 }

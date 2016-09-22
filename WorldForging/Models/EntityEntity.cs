@@ -11,14 +11,14 @@ namespace WorldForging.Models
         public int EntityEntityId { get; set; }
 
         public int Entity1Id { get; set; }
-        [ForeignKey("Entity1Id")]
+        [ForeignKey("Entity1Id"),Column(Order = 0)]
         public Entity Entity1 { get; set; }
 
         public int? Entity2Id { get; set; }
-        [ForeignKey("Entity2Id")]
+        [ForeignKey("Entity2Id"), Column(Order = 1)]
         public Entity Entity2 { get; set; }
 
-        public int EntityEntityRelationshipId { get; set; }
-        public EntityEntityRelationship EntityEntityRelationship { get; set; }
+        public int EntityRelationshipId { get; set; }
+        public EntityRelationship EntityRelationship { get; set; }
     }
 }

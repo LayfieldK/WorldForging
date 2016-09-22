@@ -214,6 +214,7 @@
     <Compile Include="Controllers\DesiresController.cs" />
     <Compile Include="Controllers\EntitiesAPIController.cs" />
     <Compile Include="Controllers\EntitiesController.cs" />
+    <Compile Include="Controllers\EntityRelationshipsController.cs" />
     <Compile Include="Controllers\GroupsAPIController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -277,6 +278,10 @@
     <Compile Include="Migrations\201608100015206_Separated entities and subjects.cs" />
     <Compile Include="Migrations\201608100015206_Separated entities and subjects.Designer.cs">
       <DependentUpon>201608100015206_Separated entities and subjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609222343082_C.cs" />
+    <Compile Include="Migrations\201609222343082_C.Designer.cs">
+      <DependentUpon>201609222343082_C.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -375,6 +380,8 @@
     <Content Include="App\Worlds\Views\WorldsView.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom-select.css" />
+    <Content Include="Scripts\customSelect.js" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="DBScripts\Empty Database.sql" />
     <Content Include="favicon.ico" />
@@ -1313,6 +1320,11 @@
     <Content Include="Views\Home\Customer.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\EntityRelationships\Create.cshtml" />
+    <Content Include="Views\EntityRelationships\Delete.cshtml" />
+    <Content Include="Views\EntityRelationships\Details.cshtml" />
+    <Content Include="Views\EntityRelationships\Edit.cshtml" />
+    <Content Include="Views\EntityRelationships\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1363,6 +1375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608100015206_Separated entities and subjects.resx">
       <DependentUpon>201608100015206_Separated entities and subjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609222343082_C.resx">
+      <DependentUpon>201609222343082_C.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
